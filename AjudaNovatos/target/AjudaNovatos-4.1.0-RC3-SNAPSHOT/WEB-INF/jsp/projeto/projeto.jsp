@@ -87,7 +87,9 @@
                                 </div>
                             </div>
                         </div>
-
+                                        <c:if test="${projeto.requisito.comentarios.size()==0}">
+                                            <h2>Projetos vazio</h2>
+                                        </c:if>
                         <!-- Área de Comentários -->
                         <div class="row coment-area" style="margin-top: 100px">
                             <div class="listview-outlook" data-role="listview"> 

@@ -29,7 +29,7 @@ public class Submeter_Mudanca implements Serializable {
     private Long id;
     @Column(columnDefinition = "MEDIUMTEXT")
     private String texto;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.REFRESH})
     @JoinColumn(name = "mudanca")
     private List<Comentario> comentarios = new ArrayList<>();
 

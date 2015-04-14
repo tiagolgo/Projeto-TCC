@@ -55,7 +55,5 @@ public class Comentario implements Serializable {
 
     public void setAutor(String autor) {
         this.autor = autor;
-    }
-
-   
+    } 
 }

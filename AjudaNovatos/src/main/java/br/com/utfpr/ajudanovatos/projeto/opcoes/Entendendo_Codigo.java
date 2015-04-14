@@ -29,7 +29,7 @@ public class Entendendo_Codigo implements Serializable {
     private long id;
     @Column(columnDefinition = "MEDIUMTEXT")
     private String documentacao;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.REFRESH})
     @JoinColumn(name = "codigo")
     private List<Comentario> comentarios = new ArrayList<>();
 

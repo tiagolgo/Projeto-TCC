@@ -62,8 +62,9 @@ public class UsuarioController {
         validator.onErrorRedirectTo(this).formulario();
         this.validator.addIf(usuario.getPassword().getSenha().isEmpty(), new SimpleMessage("senha", "Senha inválida!"));
         validator.onErrorRedirectTo(this).formulario();
-        
+
         try {
+            usuario.setId(this.userLogado.getId());
             this.dao.persiste(usuario);
             this.result.include("sucesso", "Usuario salvo com sucesso!");
             this.result.of(IndexController.class).index();
@@ -86,7 +87,9 @@ public class UsuarioController {
     @Delete("/usuario/remove/{id}")
     public void remover(Long id) {
         try {
-            this.dao.delete(id);
+            Usuario usuario = new Usuario();
+            usuario.setId(id);
+            this.dao.delete(usuario);
             this.result.include("success", "Usuario removido com sucesso!");
         } catch (Exception e) {
             System.out.println("erro ao tentar excluir");
@@ -95,12 +98,12 @@ public class UsuarioController {
 
     @Get("/perfil")
     public void perfil() {
-
+        Usuario usuario = this.dao.getPorId(this.userLogado.getId());
+        this.result.include("usuario", usuario);
     }
 
     @Get("/meus-projetos")
     public void meusProjetos() {
-        
         List projetosUser = this.dao.getProjetosUser(this.userLogado.getId());
         this.result.include("projetosUser", projetosUser);
     }

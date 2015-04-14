@@ -1,37 +1,37 @@
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\Como_Iniciar.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\Dao\especificos\DaoProjeto.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\controller\IndexController.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\Conexao\FabricaSessao.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\Projeto.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Fluxo_Contribuicao.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\controller\ProjetoController.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\Requisito.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\Interceptor\Set_Infos.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Lista_Discussao.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\Conexao\ConexaoBanco.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\Dao\especificos\DaoComentario.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\beans\ProjetoBean.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\Submeter_Mudanca.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\Dao\Dao_Basic.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\entidade\usuario\UsuarioLogado.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Pesquisar_Antes.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\controller\LoginController.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\Entendendo_Codigo.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\controller\UsuarioController.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\comentario\Comentario.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\entidade\usuario\Senha.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\Upload\UploadImagem.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\Configurar_Workspace.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\infos\Repositorio.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\entidade\usuario\Usuario.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\infos\Plataforma.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Chat_Irc.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\Dao\Dao.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\Dados_Globais\Dados.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\Comunicacao.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\controller\ComentarioController.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Feed.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\infos\Linguagem.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Encontrar_Mentor.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Tarefa_Facil.java
-C:\Users\Tiago Luiz Gomes\Documents\NetBeansProjects\AjudaNovatos\src\main\java\Dao\especificos\DaoUsuario.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\entidade\usuario\UsuarioLogado.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\Comunicacao.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\entidade\usuario\Senha.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\Dao\especificos\DaoComentario.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\Requisito.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\infos\Linguagem.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\Dados_Globais\Dados.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Encontrar_Mentor.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Fluxo_Contribuicao.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\Dao\especificos\DaoProjeto.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\Dao\Dao_Basic.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\Dao\especificos\DaoUsuario.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Lista_Discussao.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Tarefa_Facil.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\Conexao\FabricaSessao.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Pesquisar_Antes.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\controller\UsuarioController.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\Conexao\ConexaoBanco.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\controller\IndexController.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\infos\Repositorio.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\controller\LoginController.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\controller\ProjetoController.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\infos\Plataforma.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\Entendendo_Codigo.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\Interceptor\Set_Infos.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\beans\ProjetoBean.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\Como_Iniciar.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\entidade\usuario\Usuario.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\Projeto.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\Dao\Dao.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Feed.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\controller\ComentarioController.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\comentario\Comentario.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\Submeter_Mudanca.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Chat_Irc.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\Configurar_Workspace.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\Upload\UploadImagem.java

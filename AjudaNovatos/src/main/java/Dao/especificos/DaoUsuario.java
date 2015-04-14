@@ -19,7 +19,7 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author Tiago Luiz Gomes
  */
-public class DaoUsuario extends Dao_Basic {
+public class DaoUsuario extends Dao_Basic <Usuario> {
 
     @Inject
     public DaoUsuario(Session s) {

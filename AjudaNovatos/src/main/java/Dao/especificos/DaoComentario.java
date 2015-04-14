@@ -7,7 +7,6 @@ package Dao.especificos;
 
 import Dao.Dao_Basic;
 import br.com.utfpr.ajudanovatos.projeto.comentario.Comentario;
-import br.com.utfpr.ajudanovatos.projeto.opcoes.Submeter_Mudanca;
 import javax.inject.Inject;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
@@ -28,7 +27,6 @@ public class DaoComentario extends Dao_Basic<Comentario> {
         StringBuilder sb = new StringBuilder();
         sb.append("insert into comentario (autor, dataComentario, texto, ").append(alvo).append(") values ('").append(autor).append("','").append(data).append("','").append(texto).append("',").append(id).append(")");
         String sql = sb.toString();
-        //String sql = "insert into comentario (autor, dataComentario, texto, " + alvo + ") values ('" + autor + "','" + data + "','" + texto + "'," + id + ")";
         try {
             SQLQuery query = session.createSQLQuery(sql);
             query.executeUpdate();

@@ -5,13 +5,11 @@
  */
 package Upload;
 
-import java.io.Serializable;
-
 /**
  *
  * @author Tiago Luiz Gomes
  */
-public class UploadImagem implements Serializable {
+public class UploadImagem {
 /*
     private File diretorioImagens;
     private final ServletContext contexto;

@@ -29,7 +29,7 @@ public class Requisito implements Serializable {
     private long id;
     @Column(columnDefinition = "MEDIUMTEXT")
     private String requisitosBasico, requisitosAdicionais;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.REFRESH})
     @JoinColumn(name = "requisito")
     private List<Comentario> comentarios = new ArrayList<>();
 

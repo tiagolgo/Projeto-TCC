@@ -29,7 +29,7 @@ public class Lista_Discussao implements Serializable {
     private long id;
     @Column(columnDefinition = "MEDIUMTEXT")
     private String subscricao, informacao;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.REFRESH})
     @JoinColumn(name="lista")
     private List<Comentario> comentarios = new ArrayList<>();
 

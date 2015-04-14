@@ -60,8 +60,10 @@
                                         <div class="input-control text" data-role="input-control">
                                             <input id="dados-site" name="projeto.site" type="text" placeholder="Site do projeto" value="${projeto.site}">
                                             <button class="btn-clear" tabindex="-1"></button>
-                                        </div>                                 
+                                        </div>          
+                                            
                                         <label class="text-bold border-top">Repositorio:</label>
+                                        <input type="hidden" name="projeto.repositorio.id" value="${projeto.repositorio.id}"/>
                                         <div class="row no-margin">
                                             <div class="span2">
                                                 <div class="input-control select">
@@ -217,6 +219,7 @@
                         REQUISITOS
                         -->
                         <div class="frame" id="tab_2">
+                            <input type="hidden" name="projeto.requisito.id" value="${projeto.requisito.id}"/>
                             <p>
                                 Aqui você deve fornecer ao usuário informações sobre os requisitos necessários para que o novato tenha
                                 um bom desempenho no projeto. Esses requisitos abrangem desde linguagens, conhecimento técnico, sociais,
@@ -254,6 +257,7 @@
                                 </div>
                                 <div class="frames">
                                     <!-- Fluxo de contribuicao -->
+                                    <input type="hidden" name="projeto.comoIniciar.fluxo.id" value="${projeto.comoIniciar.fluxo.id}"/>
                                     <div class="frame" id="tab-inicio-1">
                                         <p>O fluxo de contribuição é o processo no qual o novato deve passar até realizar sua primeira contribuição.</p>
                                         <p>Condireções sobre o fluxo de contribuição.</p>
@@ -264,6 +268,7 @@
 
                                     <!-- Encontrar tarefa facil -->
                                     <div class="frame" id="tab-inicio-2">
+                                        <input type="hidden" name="projeto.comoIniciar.tarefaFacil.id" value="${projeto.comoIniciar.tarefaFacil.id}"/>
                                         <p>Nesta área você pode informar aos usuários onde e como eles podem encontrar tarefas fáceis para iniciarem.</p>
                                         <p>Uma sugestão é você filtrar/pesquisar na lista de arquivo do projeto, as terafas fáceis para um iniciante e disponibilizar aqui, caso possua, os feeds dos arquivos.</p>
                                         <p>O projeto possui Feeds para tarefas fáceis?</p>
@@ -329,6 +334,7 @@
 
                                     <!-- Encontrar orientador -->
                                     <div class="frame" id="tab-inicio-3">
+                                        <input type="hidden" name="projeto.comoIniciar.mentor.id" value="${projeto.comoIniciar.mentor.id}"/>
                                         <p>O projeto disponibiliza mentores aos novatos? Se sim, onde os mesmos podem ser encontrados?</p>
                                         <textarea class="tiny" name="projeto.comoIniciar.mentor.texto">
                                             ${projeto.comoIniciar.mentor.texto}
@@ -342,6 +348,7 @@
                         CONFIGURAÇÃO DE ESPAÇO DE TRABALHO
                         -->
                         <div class="frame" id="tab_4">
+                            <input type="hidden" name="projeto.configurarWorkspace.id" value="${projeto.configurarWorkspace.id}"/>
                             <p>
                                 Aqui você deve mostrar ao novato quais são os recursos disponibilizados pelo projeto. Tais como, ajuda
                                 ajuda para configurar espaço de trabalho e como enviar suas mudanças.
@@ -358,8 +365,10 @@
                         <div class="frame" id="tab_5">
                             <p>Esta parte destina-se a apresentar ao novato os canais de comunicação que são utilizados pelo projeto.</p>
                             <div class="grid fluid">
+
                                 <!-- canal de comunicação IRC -->
                                 <div class="row">
+                                    <input type="hidden" name="projeto.comunicacao.irc.id" value="${projeto.comunicacao.irc.id}"/>
                                     <p>O projeto possui IRC?</p>
                                     <div class="span2">
                                         <div class="input-control select">
@@ -385,6 +394,7 @@
 
                                 <!-- lista de discussão -->
                                 <div class="row">
+                                    <input type="hidden" name="projeto.comunicacao.lista.id" value="${projeto.comunicacao.lista.id}"/>
                                     <p>O projeto possui Lista de Discussão?</p>
                                     <div class="span2">
                                         <div class="input-control select">
@@ -418,6 +428,7 @@
                         ENTENDER CODIGO
                         -->
                         <div class="frame" id="tab_6">
+                            <input type="hidden" name="projeto.entendendoCodigo.id" value="${projeto.entendendoCodigo.id}"/>
                             <p>Entender o Código</p>
                             <textarea class="tiny" name="projeto.entendendoCodigo.documentacao">
                                 ${projeto.entendendoCodigo.documentacao}
@@ -426,6 +437,7 @@
 
                         <!-- SUBMISSÃO DE MUDANÇAS -->
                         <div class="frame" id="tab_7">
+                            <input type="hidden" name="projeto.submeterMudanca.id" value="${projeto.submeterMudanca.id}"/>
                             <p>Aqui você deve fornecer ao novato informações de como ele pode realizar a sua primeira contribuição</p>
                             <textarea class="tiny" name="projeto.submeterMudanca.texto">
                                 ${projeto.submeterMudanca.texto}

@@ -6,7 +6,6 @@
 package br.com.utfpr.ajudanovatos.controller;
 
 import Dao.especificos.DaoProjeto;
-import Upload.UploadImagem;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
@@ -18,20 +17,9 @@ import br.com.caelum.vraptor.validator.Validator;
 import static br.com.caelum.vraptor.view.Results.json;
 import br.com.utfpr.ajudanovatos.projeto.Projeto;
 import br.com.utfpr.ajudanovatos.entidade.usuario.UsuarioLogado;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.inject.Inject;
-import javax.servlet.ServletContext;
-import org.apache.commons.io.IOUtils;
 import org.hibernate.HibernateException;
 
 /**
@@ -74,9 +62,7 @@ public class ProjetoController {
     }
 
     @Post("/projeto/salvar")
-    public void salvar(Projeto projeto, UploadedFile imagem) {
-        System.out.println("Imagem " + imagem.getFileName());
-        
+    public void salvar(Projeto projeto) {        
         projeto.setDataCriacao(LocalDate.now().toString());
         projeto.setUsuario(this.usuario.getId());
 

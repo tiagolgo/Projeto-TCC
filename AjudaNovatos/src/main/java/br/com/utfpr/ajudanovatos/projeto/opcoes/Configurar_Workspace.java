@@ -29,7 +29,7 @@ public class Configurar_Workspace implements Serializable {
     private Long id;
     @Column(columnDefinition = "MEDIUMTEXT")
     private String texto;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.REFRESH})
     @JoinColumn(name = "workspace")
     private List<Comentario> comentarios = new ArrayList<>();
 

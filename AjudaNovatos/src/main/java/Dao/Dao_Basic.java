@@ -7,7 +7,6 @@ package Dao;
 
 import java.util.List;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
@@ -24,7 +23,6 @@ public class Dao_Basic<T> implements Dao<T> {
     public void persiste(T o) throws HibernateException {
         session.saveOrUpdate(o);
         session.beginTransaction().commit();
-        session.flush();
     }
 
     @Override
