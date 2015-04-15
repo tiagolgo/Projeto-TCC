@@ -20,9 +20,25 @@
     </head>
     <body class="metro">
         <c:import url="../componentes/header.jsp" />
+        <div id="fb-root"></div>
+        <div id="fb-root"></div>
+        <script>
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=273300429357640";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
         <div class="container">
             <div style="margin-top: 2%;margin-bottom: 2%; padding: 5px;">
                 <h1 class="text-bold"><c:out value="${projeto.nome}"/></h1>
+                <div class="fb-like place-right" data-href="https://developers.facebook.com/docs/plugins/" data-width="600" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
+
             </div>
             <div class="tab-control" data-role="tab-control">
                 <ul class="tabs">
@@ -61,6 +77,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
                     <!--
@@ -87,9 +104,7 @@
                                 </div>
                             </div>
                         </div>
-                                        <c:if test="${projeto.requisito.comentarios.size()==0}">
-                                            <h2>Projetos vazio</h2>
-                                        </c:if>
+
                         <!-- Área de Comentários -->
                         <div class="row coment-area" style="margin-top: 100px">
                             <div class="listview-outlook" data-role="listview"> 
@@ -109,7 +124,7 @@
                                             <div class="input-control textarea">
                                                 <textarea name="comentario_texto"></textarea>
                                             </div>
-
+                                            <div class="large fg-green rating_nota"></div>
                                             <input type="submit" value="Enviar Comentário" class="bg-blue fg-white"/> 
                                             <input type="button" value="Cancelar" class="coment-cancel bg-orange fg-white"/>
                                         </form>
@@ -120,7 +135,7 @@
                                         <c:forEach var="comentario" items="${projeto.requisito.comentarios}">
                                             <a class="list" href="#">
                                                 <div class="list-content">
-                                                    <span class="list-title"><span class="place-right icon-flag-2 fg-green smaller"></span>${comentario.autor}</span>
+                                                    <span class="list-title"><span class="rating small fg-red no-margin place-right" data-score="${comentario.nota}" data-stars="5" data-role="rating"></span>${comentario.autor}</span>
                                                     <span class="list-subtitle"><span class="place-right">1:51</span>Adicionado em ${comentario.dataComentario}</span>
                                                     <span class="list-remark">${comentario.texto}</span>
                                                 </div>
@@ -130,6 +145,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
                     <!--
@@ -151,9 +167,10 @@
                                     <p>${projeto.comoIniciar.fluxo.texto}</p>
                                     <div class="grid fluid text-left ">
                                         <script>
-                                            function ativaAba(aba) {
-                                                $(aba).click();
-                                            }
+            function ativaAba(aba) {
+                $(aba).click();
+            }
+
                                         </script>
                                         <div class="row">
                                             <div class="span2 offset0">
@@ -211,6 +228,7 @@
                                                         <div class="input-control textarea">
                                                             <textarea name="comentario_texto"></textarea>
                                                         </div>
+                                            <div class="large fg-green rating_nota"></div>
 
                                                         <input type="submit" value="Enviar Comentário" class="bg-blue fg-white"/> 
                                                         <input type="button" value="Cancelar" class="coment-cancel bg-orange fg-white"/>
@@ -222,7 +240,7 @@
                                                     <c:forEach var="comentario" items="${projeto.comoIniciar.fluxo.comentarios}">
                                                         <a class="list" href="#">
                                                             <div class="list-content">
-                                                                <span class="list-title"><span class="place-right icon-flag-2 fg-green smaller"></span>${comentario.autor}</span>
+                                                                <span class="list-title"><span class="rating small fg-red no-margin place-right" data-score="${comentario.nota}" data-stars="5" data-role="rating"></span>${comentario.autor}</span>
                                                                 <span class="list-subtitle"><span class="place-right">1:51</span>Adicionado em ${comentario.dataComentario}</span>
                                                                 <span class="list-remark">${comentario.texto}</span>
                                                             </div>
@@ -331,7 +349,7 @@
                                                         <div class="input-control textarea">
                                                             <textarea name="comentario_texto"></textarea>
                                                         </div>
-
+                                            <div class="large fg-green rating_nota"></div>
                                                         <input type="submit" value="Enviar Comentário" class="bg-blue fg-white"/> 
                                                         <input type="button" value="Cancelar" class="coment-cancel bg-orange fg-white"/>
                                                     </form>
@@ -342,7 +360,7 @@
                                                     <c:forEach var="comentario" items="${projeto.comoIniciar.tarefaFacil.comentarios}">
                                                         <a class="list" href="#">
                                                             <div class="list-content">
-                                                                <span class="list-title"><span class="place-right icon-flag-2 fg-green smaller"></span>${comentario.autor}</span>
+                                                                <span class="list-title"><span class="rating small fg-red no-margin place-right" data-score="${comentario.nota}" data-stars="5" data-role="rating"></span>${comentario.autor}</span>
                                                                 <span class="list-subtitle"><span class="place-right">1:51</span>Adicionado em ${comentario.dataComentario}</span>
                                                                 <span class="list-remark">${comentario.texto}</span>
                                                             </div>
@@ -357,19 +375,17 @@
 
                                 <!-- Encontrar especialista -->    
                                 <div class="frame" id="especialista">
-                                    <div class="span12">
-                                        <p>${projeto.comoIniciar.mentor.texto}</p>
-                                        <p>
-                                            Here you can find a list of mentors engaged to help newcomers to Amarok: Mentors of Amarok by OpenHatch
+                                    <p>${projeto.comoIniciar.mentor.texto}</p>
+                                    <p>
+                                        Here you can find a list of mentors engaged to help newcomers to Amarok: Mentors of Amarok by OpenHatch
 
-                                            Other than this:
+                                        Other than this:
 
-                                            It is possible to solve doubts and get support from developers using mailing list and IRC
-                                            When you choose a task you can ask for help and mentorship in bugzilla, by commenting the task and asking for proper support.
-                                            You can check who are the experts by looking at the CC list of the task (as you can observe in the Figure below).
-                                        </p>
-                                        <img src="http://localhost:8080/AjudaNovatos/images/projeto/find_mentor.png" alt="encontre um mentor" style="width: 600px;height: 200px"/>
-                                    </div>
+                                        It is possible to solve doubts and get support from developers using mailing list and IRC
+                                        When you choose a task you can ask for help and mentorship in bugzilla, by commenting the task and asking for proper support.
+                                        You can check who are the experts by looking at the CC list of the task (as you can observe in the Figure below).
+                                    </p>
+                                    <img src="http://localhost:8080/AjudaNovatos/images/projeto/find_mentor.png" alt="encontre um mentor" style="width: 100%;height: 300px"/>
 
                                     <!-- Área de Comentários -->
                                     <div class="row coment-area" style="margin-top: 100px">
@@ -390,7 +406,7 @@
                                                         <div class="input-control textarea">
                                                             <textarea name="comentario_texto"></textarea>
                                                         </div>
-
+                                            <div class="large fg-green rating_nota"></div>
                                                         <input type="submit" value="Enviar Comentário" class="bg-blue fg-white"/> 
                                                         <input type="button" value="Cancelar" class="coment-cancel bg-orange fg-white"/>
                                                     </form>
@@ -401,7 +417,7 @@
                                                     <c:forEach var="comentario" items="${projeto.comoIniciar.mentor.comentarios}">
                                                         <a class="list" href="#">
                                                             <div class="list-content">
-                                                                <span class="list-title"><span class="place-right icon-flag-2 fg-green smaller"></span>${comentario.autor}</span>
+                                                                <span class="list-title"><span class="rating small fg-red no-margin place-right" data-score="${comentario.nota}" data-stars="5" data-role="rating"></span>${comentario.autor}</span>
                                                                 <span class="list-subtitle"><span class="place-right">1:51</span>Adicionado em ${comentario.dataComentario}</span>
                                                                 <span class="list-remark">${comentario.texto}</span>
                                                             </div>
@@ -482,7 +498,7 @@
                                                         <div class="input-control textarea">
                                                             <textarea name="comentario_texto"></textarea>
                                                         </div>
-
+                                            <div class="large fg-green rating_nota"></div>
                                                         <input type="submit" value="Enviar Comentário" class="bg-blue fg-white"/> 
                                                         <input type="button" value="Cancelar" class="coment-cancel bg-orange fg-white"/>
                                                     </form>
@@ -493,7 +509,7 @@
                                                     <c:forEach var="comentario" items="${projeto.comunicacao.pesquisa.comentarios}">
                                                         <a class="list" href="#">
                                                             <div class="list-content">
-                                                                <span class="list-title"><span class="place-right icon-flag-2 fg-green smaller"></span>${comentario.autor}</span>
+                                                                <span class="list-title"><span class="rating small fg-red no-margin place-right" data-score="${comentario.nota}" data-stars="5" data-role="rating"></span>${comentario.autor}</span>
                                                                 <span class="list-subtitle"><span class="place-right">1:51</span>Adicionado em ${comentario.dataComentario}</span>
                                                                 <span class="list-remark">${comentario.texto}</span>
                                                             </div>
@@ -532,7 +548,7 @@
                                                         <div class="input-control textarea">
                                                             <textarea name="comentario_texto"></textarea>
                                                         </div>
-
+                                            <div class="large fg-green rating_nota"></div>
                                                         <input type="submit" value="Enviar Comentário" class="bg-blue fg-white"/> 
                                                         <input type="button" value="Cancelar" class="coment-cancel bg-orange fg-white"/>
                                                     </form>
@@ -543,7 +559,7 @@
                                                     <c:forEach var="comentario" items="${projeto.comunicacao.irc.comentarios}">
                                                         <a class="list" href="#">
                                                             <div class="list-content">
-                                                                <span class="list-title"><span class="place-right icon-flag-2 fg-green smaller"></span>${comentario.autor}</span>
+                                                                <span class="list-title"><span class="rating small fg-red no-margin place-right" data-score="${comentario.nota}" data-stars="5" data-role="rating"></span>${comentario.autor}</span>
                                                                 <span class="list-subtitle"><span class="place-right">1:51</span>Adicionado em ${comentario.dataComentario}</span>
                                                                 <span class="list-remark">${comentario.texto}</span>
                                                             </div>
@@ -594,7 +610,7 @@
                                                         <div class="input-control textarea">
                                                             <textarea name="comentario_texto"></textarea>
                                                         </div>
-
+                                            <div class="large fg-green rating_nota"></div>
                                                         <input type="submit" value="Enviar Comentário" class="bg-blue fg-white"/> 
                                                         <input type="button" value="Cancelar" class="coment-cancel bg-orange fg-white"/>
                                                     </form>
@@ -605,7 +621,7 @@
                                                     <c:forEach var="comentario" items="${projeto.comunicacao.lista.comentarios}">
                                                         <a class="list" href="#">
                                                             <div class="list-content">
-                                                                <span class="list-title"><span class="place-right icon-flag-2 fg-green smaller"></span>${comentario.autor}</span>
+                                                                <span class="list-title"><span class="rating small fg-red no-margin place-right" data-score="${comentario.nota}" data-stars="5" data-role="rating"></span>${comentario.autor}</span>
                                                                 <span class="list-subtitle"><span class="place-right">1:51</span>Adicionado em ${comentario.dataComentario}</span>
                                                                 <span class="list-remark">${comentario.texto}</span>
                                                             </div>
@@ -670,7 +686,7 @@
                                             <div class="input-control textarea">
                                                 <textarea name="comentario_texto"></textarea>
                                             </div>
-
+                                            <div class="large fg-green rating_nota"></div>
                                             <input type="submit" value="Enviar Comentário" class="bg-blue fg-white"/> 
                                             <input type="button" value="Cancelar" class="coment-cancel bg-orange fg-white"/>
                                         </form>
@@ -681,7 +697,7 @@
                                         <c:forEach var="comentario" items="${projeto.configurarWorkspace.comentarios}">
                                             <a class="list" href="#">
                                                 <div class="list-content">
-                                                    <span class="list-title"><span class="place-right icon-flag-2 fg-green smaller"></span>${comentario.autor}</span>
+                                                    <span class="list-title"><span class="rating small fg-red no-margin place-right" data-score="${comentario.nota}" data-stars="5" data-role="rating"></span>${comentario.autor}</span>
                                                     <span class="list-subtitle"><span class="place-right">1:51</span>Adicionado em ${comentario.dataComentario}</span>
                                                     <span class="list-remark">${comentario.texto}</span>
                                                 </div>
@@ -732,7 +748,7 @@
                                             <div class="input-control textarea">
                                                 <textarea name="comentario_texto"></textarea>
                                             </div>
-
+                                            <div class="large fg-green rating_nota"></div>
                                             <input type="submit" value="Enviar Comentário" class="bg-blue fg-white"/> 
                                             <input type="button" value="Cancelar" class="coment-cancel bg-orange fg-white"/>
                                         </form>
@@ -743,7 +759,7 @@
                                         <c:forEach var="comentario" items="${projeto.entendendoCodigo.comentarios}">
                                             <a class="list" href="#">
                                                 <div class="list-content">
-                                                    <span class="list-title"><span class="place-right icon-flag-2 fg-green smaller"></span>${comentario.autor}</span>
+                                                    <span class="list-title"><span class="rating small fg-red no-margin place-right" data-score="${comentario.nota}" data-stars="5" data-role="rating"></span>${comentario.autor}</span>
                                                     <span class="list-subtitle"><span class="place-right">1:51</span>Adicionado em ${comentario.dataComentario}</span>
                                                     <span class="list-remark">${comentario.texto}</span>
                                                 </div>
@@ -782,7 +798,7 @@
                                             <div class="input-control textarea">
                                                 <textarea name="comentario_texto"></textarea>
                                             </div>
-
+                                            <div class="large fg-green rating_nota"></div>
                                             <input type="submit" value="Enviar Comentário" class="bg-blue fg-white"/> 
                                             <input type="button" value="Cancelar" class="coment-cancel bg-orange fg-white"/>
                                         </form>
@@ -793,7 +809,7 @@
                                         <c:forEach var="comentario" items="${projeto.submeterMudanca.comentarios}">
                                             <a class="list" href="#">
                                                 <div class="list-content">
-                                                    <span class="list-title"><span class="place-right icon-flag-2 fg-green smaller"></span>${comentario.autor}</span>
+                                                    <span class="list-title"><span class="rating small fg-red no-margin place-right" data-score="${comentario.nota}" data-stars="5" data-role="rating"></span>${comentario.autor}</span>
                                                     <span class="list-subtitle"><span class="place-right">1:51</span>Adicionado em ${comentario.dataComentario}</span>
                                                     <span class="list-remark">${comentario.texto}</span>
                                                 </div>
@@ -810,6 +826,21 @@
         <script type="text/javascript">
             // AREA DE COMENTARIO ESCONDER/MOSTRAR
             $(function () {
+                // ATRIBUIÇÃO DE NOTA
+                var nota = 0;
+                $(".rating_nota").rating({
+                    static: false,
+                    score: 0,
+                    stars: 5,
+                    showHint: true,
+                    hints: ['péssimo', 'ruim', 'regular', 'bom', 'ótimo'],
+                    showScore: false,
+                    click: function (value, rating) {
+                        rating.rate(value);
+                        nota = value;
+                    }
+                });
+
                 $(".coment-btn").on('click', function () {//exibe formulario de comentario
                     $('.container-form').toggle('slow');
                 });
@@ -825,27 +856,19 @@
                     var form = $(this);
                     var comentario_data = new Date().toLocaleString();
                     var coment_area = $(this).closest(".coment-area").find(".coment-content-area .group-content");
-                    var dados = $(form).serialize();
+                    var dados = $(form).serialize() + "&nota=" + nota;
                     console.log(dados);
                     $.ajax({
                         type: 'GET',
                         url: '/AjudaNovatos/adicionarComentario',
-                        data: dados + "&comentario_data=" + comentario_data
+                        data: dados + "&comentario_data=" + comentario_data+"&nota="+nota
                     }).done(function () {
                         $(coment_area).append(
-                                '<a class="list" href="#"><div class="list-content"><span class="list-title"><span class="place-right icon-flag-2 fg-green smaller"></span>' + '${userLogado.nome}' + '</span><span class="list-subtitle"><span class="place-right">1:51</span>Adicionado em ' + comentario_data + '</span><span class="list-remark">' + $(form).find("textarea").val() + '</span></div></a>');
+                                '<a class="list" href="#"><div class="list-content"><span class="list-title"> <span class="rating small fg-red no-margin place-right" data-score="' + nota + '" data-stars="5" data-role="rating"></span>' + '${userLogado.nome}' + '</span><span class="list-subtitle"><span class="place-right">1:51</span>Adicionado em ' + comentario_data + '</span><span class="list-remark">' + $(form).find("textarea").val() + '</span></div></a>');
                         $(this).find('textarea').val("");
                     }).fail(function () {
                         alert("Não foi possível adicionar o comentario!");
                     });
-                });
-
-                // ATRIBUIÇÃO DE NOTA
-                $(".rating").rating({
-                    click: function (value, rating) {
-                        nota = value;
-                        rating.rate(value);
-                    }
                 });
             });
         </script>

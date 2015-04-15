@@ -61,12 +61,13 @@
                                                 <img src="/AjudaNovatos/images/word.png" class="icon">
                                                 <div class="data">
                                                     <span class="list-title"><c:out value="${projeto.nome}"/></span>
-                                                    <div class="ratin rating small fg-red" data-score="2" data-stars="5" data-role="rating"></div>
+                                                    <!--<div id="nota" class="rating active small fg-red no-margin" data-score="2" data-stars="5" data-role="rating"></div>-->
                                                 </div>
                                             </div>
                                         </a>
                                     </div>  
                                 </c:forEach>
+
                             </div>
                         </div>
                     </div>
@@ -84,7 +85,7 @@
                                                 <img src="/AjudaNovatos/images/word.png" class="icon">
                                                 <div class="data">
                                                     <span class="list-title"><c:out value="${linguagem[1]}"/></span>
-                                                    <div class="progress-bar small" data-role="progress-bar" data-value="75"></div>
+                                                    <!--<div class="progress-bar small" data-role="progress-bar" data-value="75"></div>-->
                                                     <span class="list-remark"><c:out value="${linguagem[0]}"/> projeto</span>                                                </div>
                                             </div>
                                         </a>
@@ -107,7 +108,7 @@
                                                 <img src="/AjudaNovatos/images/word.png" class="icon">
                                                 <div class="data">
                                                     <span class="list-title"><c:out value="${recentes.nome}"/></span>
-                                                    <div class="ratin rating small fg-red" data-score="2" data-stars="5" data-role="rating"></div>
+                                                    <span class="rating active small fg-red no-margin" data-score="2" data-stars="5" data-role="rating"></span>
                                                 </div>
                                             </div>
                                         </a>
@@ -117,6 +118,11 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <h4>Event handlers</h4>
+            <div class="example">
+                <div id="rating_1" class="large fg-green"></div>
+                <input type="button" value="ver rating" id="verRating"/>
             </div>
 
             <footer>
@@ -142,6 +148,26 @@
                     </ul>
                 </div>
             </footer>
-        </div>                                          
+        </div>           
+        <script>
+            $(function () {
+                var nota;
+                $("#rating_1").rating({
+                    static: false,
+                    score: 2,
+                    stars: 5,
+                    showHint: true,
+                    showScore: true,
+                    click: function (value, rating) {
+                        rating.rate(value);
+                        nota=value;
+                    }
+                });
+                
+                $("#verRating").on("click",function(){
+                   console.log("Nota atribuida: "+nota);
+                });
+            });
+        </script>
     </body>
 </html>

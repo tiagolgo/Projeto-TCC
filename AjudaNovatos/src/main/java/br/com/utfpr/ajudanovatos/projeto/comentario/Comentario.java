@@ -24,6 +24,7 @@ public class Comentario implements Serializable {
     @Column(columnDefinition = "MEDIUMTEXT")
     String texto;
     String dataComentario, autor;
+    private int nota;
 
     public long getId() {
         return id;
@@ -56,4 +57,14 @@ public class Comentario implements Serializable {
     public void setAutor(String autor) {
         this.autor = autor;
     } 
+
+    public int getNota() {
+        return nota;
+    }
+
+    public void setNota(int nota) {
+        this.nota = nota;
+    }
+    
+    
 }

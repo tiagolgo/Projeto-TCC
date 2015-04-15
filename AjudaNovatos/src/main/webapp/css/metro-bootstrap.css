@@ -6667,7 +6667,8 @@ a {
 }
 .metro .listview .list {
   border: 4px transparent solid;
-  width: 300px;
+  //width: 300px;
+  width: 100%;
   height: auto;
   position: relative;
   display: block;

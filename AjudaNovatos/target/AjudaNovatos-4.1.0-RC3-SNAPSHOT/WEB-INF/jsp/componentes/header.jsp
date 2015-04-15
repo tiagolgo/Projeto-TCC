@@ -8,7 +8,6 @@
 <script src="/AjudaNovatos/js/jquery.widget.min.js"></script>
 <script src="/AjudaNovatos/js/jquery.mousewheel.js"></script>
 <script src="/AjudaNovatos/js/metro.min.js"></script>
-<script src="/AjudaNovatos/js/metro-listview.js"></script>
 
 <header>
     <nav class="navigation-bar bg-darkBlue">
@@ -16,8 +15,8 @@
             <a href="/AjudaNovatos" class="element text-bold" style="font-size: 20px"><span class="icon-grid-view"></span> AJUDA NOVATOS</a>
             <span class="element-divider"></span>
             <a class="pull-menu" href="#"></a>
-            <div class="element place-left"  data-hint-mode="2" data-hint="Visualizar projetos.">
-                <a class="dropdown-toggle" href="#" style="font-size: 20px"><span class=""></span> Projetos</a>
+            <div class="element place-left bg-black"  data-hint-mode="2" data-hint="Visualizar projetos.">
+                <a class="dropdown-toggle " href="#" style="font-size: 20px"><span class=""></span> Projetos</a>
                 <ul class="dropdown-menu place-left dark" data-role="dropdown">
                     <li>
                         <a href="#" class="dropdown-toggle" data-hint-mode="2" data-hint="Visualizar projetos por linguagem">Linguagem</a>

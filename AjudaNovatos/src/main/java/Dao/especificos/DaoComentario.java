@@ -23,10 +23,11 @@ public class DaoComentario extends Dao_Basic<Comentario> {
         classe = Comentario.class;
     }
 
-    public boolean saveComentario(Long id, String alvo, String autor, String texto, String data) {
+    public boolean saveComentario(Long id, String alvo, String autor, String texto, String data, int nota) {
         StringBuilder sb = new StringBuilder();
-        sb.append("insert into comentario (autor, dataComentario, texto, ").append(alvo).append(") values ('").append(autor).append("','").append(data).append("','").append(texto).append("',").append(id).append(")");
+        sb.append("insert into comentario (autor, dataComentario, texto, nota,").append(alvo).append(") values ('").append(autor).append("','").append(data).append("','").append(texto).append("',").append(nota).append(",").append(id).append(")");
         String sql = sb.toString();
+        System.out.println("sql comentrio "+sql);
         try {
             SQLQuery query = session.createSQLQuery(sql);
             query.executeUpdate();
