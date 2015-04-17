@@ -73,8 +73,8 @@
                         <tr> 
                             <td style="display: none" class="id">${projeto.id}</td>
                             <td>${projeto.nome}</td>
-                            <td>${projeto.plataformas.toString()}</td>
-                            <td>${projeto.linguagens.toString()}</td>
+                            <td>${projeto.plataformas.toString().replace('[','').replace(']','')}</td>
+                            <td>${projeto.linguagens.toString().replace('[','').replace(']','')}</td>
                             <td>${projeto.dataCriacao}</td>
                         </tr> 
                     </c:forEach>
