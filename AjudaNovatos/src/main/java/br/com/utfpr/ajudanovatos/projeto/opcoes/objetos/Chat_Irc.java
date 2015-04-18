@@ -30,8 +30,8 @@ public class Chat_Irc implements Serializable {
     @Column(columnDefinition = "MEDIUMTEXT")
     private String texto;
     private String url;
-    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.REFRESH})
-    @JoinColumn(name = "chat")
+    @OneToMany(cascade = {CascadeType.REMOVE})
+    @JoinColumn(name = "chat", updatable = false)
     private List<Comentario> comentarios = new ArrayList<>();
 
     public long getId() {

@@ -29,8 +29,8 @@ public class Pesquisar_Antes implements Serializable {
     private long id;
     @Column(columnDefinition = "MEDIUMTEXT")
     private String texto;
-    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.REFRESH})
-    @JoinColumn(name="pesquisa")
+    @OneToMany(cascade = {CascadeType.REMOVE})
+    @JoinColumn(name="pesquisa", updatable = false)
     private List<Comentario> comentarios = new ArrayList<>();
 
     public long getId() {

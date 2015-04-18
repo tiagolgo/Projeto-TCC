@@ -119,11 +119,6 @@
                     </div>
                 </div>
             </div>
-            <h4>Event handlers</h4>
-            <div class="example">
-                <div id="rating_1" class="large fg-green"></div>
-                <input type="button" value="ver rating" id="verRating"/>
-            </div>
 
             <footer>
                 <div class="grid fluid">
@@ -151,6 +146,7 @@
         </div>           
         <script>
             $(function () {
+                
                 var nota;
                 $("#rating_1").rating({
                     static: false,
@@ -162,10 +158,6 @@
                         rating.rate(value);
                         nota=value;
                     }
-                });
-                
-                $("#verRating").on("click",function(){
-                   console.log("Nota atribuida: "+nota);
                 });
             });
         </script>

@@ -32,8 +32,8 @@ public class Tarefa_Facil implements Serializable {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "tarefa")
     private List<Feed> feeds = new ArrayList<>();
-    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.REFRESH})
-    @JoinColumn(name = "tarefa")
+    @OneToMany(cascade = {CascadeType.REMOVE})
+    @JoinColumn(name = "tarefa", updatable = false)
     private List<Comentario> comentarios = new ArrayList<>();
 
     public long getId() {

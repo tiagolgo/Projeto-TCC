@@ -37,23 +37,28 @@
             <div class="no-tablet-portrait">
                 <span class="element-divider"></span>
                 <div class="element input-element">
-                    <form method="post" action='<c:url value="/projetos/nome"/>' id="buscarProjeto">
+                    <form method="get" action='<c:url value="/projetos/nome"/>' id="buscarProjeto">
                         <div class="input-control text">
                             <input type="text" id="busca" list="lista" name="busca" placeholder="Encontre um projeto..." style=" width: 350px; height: 35px" autocomplete="off"/>
-                            <div style="margin-top: 0px;">
-                                <datalist id="lista">
-                                </datalist>
-                            </div>
                             <button type="submit" class="btn-search" data-hint-mode="2" data-hint="Buscar projeto"></button>
                         </div>
+                        <ul id="sugestao" class="dropdown-menu place-left bg-blue" data-role="dropdown" style="width: 100%">
+                            <div id="items"></div>
+                            <li class="no-margin divider bg-white"></li>
+                            <li class="no-margin"><a href='<c:url value="/projeto/novo"/>' class="fg-hover-blue"><i class="icon-plus-2"> </i> Adicionar Projeto</a></li>
+                        </ul>
                     </form>
+
                     <script type="text/javascript">
                         $(function () {
                             $("#busca").on("keyup", function (event) {
+                                //$("#sugestao").toggle();
+
                                 var key = event.keyCode;
                                 if (key >= 65 && key <= 90 || key == 8) {
-                                    $("#lista").empty();
+                                    $("#sugestao #items").empty();
                                     var aux = $(this).val();
+                                    var i=0;
                                     if (aux.length > 2) {
                                         $.ajax({
                                             type: 'GET',
@@ -62,8 +67,10 @@
                                             dataType: 'json'
                                         }).done(function (data) {
                                             $.each(data.list, function (index, value) {
-                                                $("#lista").append("<option>" + value[1] + "</option>");
+                                                console.log($(value).size());
+                                                $("#sugestao #items").prepend("<li><a href='#' class='fg-hover-blue'>" + value[1] + "</a></li>");
                                             });
+                                            $("#sugestao").show();
                                         }).fail(function (data) {
                                             alert("Ítem não adicionado! " + data);
                                         });

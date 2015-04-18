@@ -29,8 +29,8 @@ public class Lista_Discussao implements Serializable {
     private long id;
     @Column(columnDefinition = "MEDIUMTEXT")
     private String subscricao, informacao;
-    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.REFRESH})
-    @JoinColumn(name="lista")
+    @OneToMany(cascade = {CascadeType.REMOVE})
+    @JoinColumn(name="lista", updatable = false)
     private List<Comentario> comentarios = new ArrayList<>();
 
     public long getId() {

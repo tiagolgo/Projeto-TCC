@@ -29,8 +29,8 @@ public class Configurar_Workspace implements Serializable {
     private Long id;
     @Column(columnDefinition = "MEDIUMTEXT")
     private String texto;
-    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.REFRESH})
-    @JoinColumn(name = "workspace")
+    @OneToMany(cascade = {CascadeType.REMOVE})
+    @JoinColumn(name = "workspace", updatable = false)
     private List<Comentario> comentarios = new ArrayList<>();
 
     public Long getId() {

@@ -111,7 +111,7 @@ public class ProjetoController {
         this.result.forwardTo(this).projetos();
     }
 
-    @Post("/projetos/nome")
+    @Get("/projetos/nome")
     public void getProjetosNome(String busca) {
         List list = this.dao.pesquisarTrecho(busca);
         this.result.include("projetos", list);

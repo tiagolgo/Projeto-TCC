@@ -29,8 +29,8 @@ public class Requisito implements Serializable {
     private long id;
     @Column(columnDefinition = "MEDIUMTEXT")
     private String requisitosBasico, requisitosAdicionais;
-    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.REFRESH})
-    @JoinColumn(name = "requisito")
+    @OneToMany(cascade = {CascadeType.REMOVE})
+    @JoinColumn(name = "requisito", updatable = false)
     private List<Comentario> comentarios = new ArrayList<>();
 
     public long getId() {

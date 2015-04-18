@@ -61,7 +61,7 @@
                                             <input id="dados-site" name="projeto.site" type="text" placeholder="Site do projeto" value="${projeto.site}">
                                             <button class="btn-clear" tabindex="-1"></button>
                                         </div>          
-                                            
+
                                         <label class="text-bold border-top">Repositorio:</label>
                                         <input type="hidden" name="projeto.repositorio.id" value="${projeto.repositorio.id}"/>
                                         <div class="row no-margin">
@@ -246,9 +246,11 @@
                         </div> 
 
                         <!--
-                        POR ONDE COMEÇAR
+                        COMO INICIAR
                         -->
                         <div class='frame' id='tab_3'>
+                            <input type="hidden" name="projeto.comoIniciar.id" value="${projeto.comoIniciar.id}"/>
+
                             <div class="tab-control" data-role="tab-control">
                                 <div class="tabs">
                                     <li class="active"><a href="#tab-inicio-1">Fluxo de Contribuicao</a></li>
@@ -363,8 +365,11 @@
                         COMUNICACAO
                         -->
                         <div class="frame" id="tab_5">
+                            <input type="hidden" name="projeto.comunicacao.id" value="${projeto.comunicacao.id}"/>
+
                             <p>Esta parte destina-se a apresentar ao novato os canais de comunicação que são utilizados pelo projeto.</p>
                             <div class="grid fluid">
+                                <input type="hidden" name="projeto.comunicacao.pesquisa.id" value="${projeto.comunicacao.pesquisa.id}"/>
 
                                 <!-- canal de comunicação IRC -->
                                 <div class="row">

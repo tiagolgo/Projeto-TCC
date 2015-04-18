@@ -29,8 +29,8 @@ public class Fluxo_Contribuicao implements Serializable {
     private long id;
     @Column(columnDefinition = "MEDIUMTEXT")
     private String texto;
-    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.REFRESH})
-    @JoinColumn(name="fluxo")
+    @OneToMany(cascade = {CascadeType.REMOVE})
+    @JoinColumn(name="fluxo", updatable = false)
     private List<Comentario> comentarios = new ArrayList<>();
 
     public long getId() {
