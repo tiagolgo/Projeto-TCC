@@ -8,6 +8,8 @@ br\com\utfpr\ajudanovatos\controller\IndexController.class
 br\com\utfpr\ajudanovatos\controller\ComentarioController.class
 br\com\utfpr\ajudanovatos\entidade\usuario\Senha.class
 br\com\utfpr\ajudanovatos\projeto\opcoes\Entendendo_Codigo.class
+br\com\utfpr\ajudanovatos\controller\LocaleController.class
+br\com\utfpr\ajudanovatos\projeto\beans\LinguagemBean.class
 br\com\utfpr\ajudanovatos\projeto\comentario\Comentario.class
 br\com\utfpr\ajudanovatos\projeto\infos\Linguagem.class
 br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Pesquisar_Antes_.class
@@ -35,6 +37,7 @@ br\com\utfpr\ajudanovatos\projeto\comentario\Comentario_.class
 br\com\utfpr\ajudanovatos\projeto\infos\Plataforma.class
 br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Pesquisar_Antes.class
 Upload\UploadImagem.class
+Dao\especificos\DaoLinguagem.class
 br\com\utfpr\ajudanovatos\projeto\opcoes\Submeter_Mudanca_.class
 br\com\utfpr\ajudanovatos\projeto\Projeto.class
 br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Encontrar_Mentor_.class

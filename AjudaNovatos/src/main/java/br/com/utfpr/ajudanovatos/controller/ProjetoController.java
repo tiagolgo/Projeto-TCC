@@ -5,6 +5,7 @@
  */
 package br.com.utfpr.ajudanovatos.controller;
 
+import Dados_Globais.Dados;
 import Dao.especificos.DaoProjeto;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Delete;
@@ -29,45 +30,40 @@ import org.hibernate.HibernateException;
 @Controller
 public class ProjetoController {
 
-    private final Result result;
-    private final DaoProjeto dao;
-    private final UsuarioLogado usuario;
-    private final Validator validator;
-
     @Inject
-    public ProjetoController(Result result, DaoProjeto dao, UsuarioLogado user, Validator v) {
-        this.result = result;
-        this.dao = dao;
-        this.usuario = user;
-        this.validator = v;
-    }
+    private Result result;
+    @Inject
+    private DaoProjeto dao;
+    @Inject
+    private UsuarioLogado usuario;
+    @Inject
+    private Validator validator;
+    @Inject
+    private Dados dados;
 
-    public ProjetoController() {
-        this.result = null;
-        this.dao = null;
-        this.usuario = null;
-        this.validator = null;
-    }
-
-    @Get("/projeto/novo")
+    @Get(value = {"pt/novo/projeto", "en/new/project"})
     public void formulario() {
         this.validator.addIf(!this.usuario.isLogado(), new SimpleMessage("login", "E necessario estar logado!"));
-        this.validator.onErrorRedirectTo(UsuarioController.class).login();
+        this.validator.onErrorForwardTo(UsuarioController.class).login();
     }
 
-    @Get("/projeto/{id}")
+    @Get(value = {"pt/projeto/{id}", "en/project/{id}"})
     public void projeto(Long id) {
         Projeto p = this.dao.getPorId(id);
         this.result.include("projeto", p);
     }
 
-    @Post("/projeto/salvar")
-    public void salvar(Projeto projeto) {        
+    @Post(value = {"pt/salvar/projeto", "en/save/project"})
+    public void salvar(Projeto projeto) {
         projeto.setDataCriacao(LocalDate.now().toString());
         projeto.setUsuario(this.usuario.getId());
 
         try {
             dao.persiste(projeto);
+            if (projeto.getId() == null) {
+                this.dados.setProjeto(projeto);
+                this.dados.setLinguagens(projeto.getLinguagens());
+            }
         } catch (HibernateException e) {
             System.err.println("Erro ao tentar salvar projeto........");
             e.printStackTrace();
@@ -75,14 +71,14 @@ public class ProjetoController {
         this.result.of(this).formulario();
     }
 
-    @Get("/editar-projeto/{id}")
+    @Get(value = {"pt/editar/projeto/{id}", "en/edit/project/{id}"})
     public void alterar(Long id) {
         Projeto p = this.dao.getPorId(id);
         this.result.include("projeto", p);
         this.result.of(this).formulario();
     }
 
-    @Delete("/remove-projeto")
+    @Delete(value = {"pt/remove/projeto", "en/remove/project"})
     public void remover(Long projeto) {
         try {
             this.dao.deletar(projeto);
@@ -93,25 +89,25 @@ public class ProjetoController {
         this.result.forwardTo(UsuarioController.class).meusProjetos();
     }
 
-    @Get("/projetos")
+    @Get(value = {"pt/projetos", "en/projects"})
     public void projetos() {
     }
 
-    @Get("/projetos/todos")
+    @Get(value = {"pt/projetos/todos", "en/projects/all"})
     public void projetosTodos() {
         List<Projeto> lista = this.dao.lista();
         this.result.include("projetos", lista);
         this.result.of(this).projetos();
     }
 
-    @Get("/projeto/linguagem/{linguagem}")
+    @Get(value = {"pt/projeto/linguagem/{linguagem}", "en/project/language/{linguagem}"})
     public void getProjetosLinguagem(String linguagem) {
         List lista = this.dao.getProjetoLinguagem(linguagem);
         this.result.include("projetos", lista);
         this.result.forwardTo(this).projetos();
     }
 
-    @Get("/projetos/nome")
+    @Get(value = {"pt/projetos/nome", "en/projects/name"})
     public void getProjetosNome(String busca) {
         List list = this.dao.pesquisarTrecho(busca);
         this.result.include("projetos", list);

@@ -15,43 +15,42 @@
     </head>
     <body class="metro">
         <c:import url="../componentes/header.jsp"/>
-        <div class="container" style="margin-top: 4%">
+        <div class="container">
+            <c:import url="../componentes/internacionalizacao.jsp"/>
             <center>
-
                 <div class="grid">
                     <div class="span8">
-                        <div class="success">
-                            <c:out value="${successo}"/>
-                        </div>
                         <div class="panel text-left">
-                            <div class="panel-header">
-                                Cadastro
+                            <div class="panel-header bg-darkOrange fg-white">
+                                ${t["cadastro.div.titulo"]}
                             </div>
                             <div class="panel-content padding10">
-
-                                <form method="post" action="<c:url value="/usuario/salvar"/>" id="form-novo-usuario">
+                                <c:if test="${errors!=null}">
+                                    <div class="fg-red padding5 ">
+                                        <c:forEach var="error" items="${errors}">
+                                            ${error.message}<br />
+                                        </c:forEach>
+                                    </div>
+                                </c:if>
+                                <form method="post" action="<c:url value="${['url.salvar.usuario']}"/>" id="form-novo-usuario">
                                     <div class="input-control text">
-                                        <input type="text" value="" id="nome" name="usuario.nome" placeholder="Nome"/>
+                                        <input type="text" value="" id="nome" name="usuario.nome" placeholder="${t["cadastro.placeholder.nome"]}"/>
                                         <button class="btn-clear"></button>
                                     </div>
                                     <div class="input-control text">
-                                        <input type="text" value="" id="email" name="usuario.email" placeholder="E-mail"/>
-                                        <button class="btn-clear"></button>
-                                    </div>
-                                    <div class="input-control text">
-                                        <input type="text" value="" id="login" name="usuario.login" placeholder="Login"/>
+                                        <input type="text" value="" id="email" name="usuario.email" placeholder="${t["cadastro.placeholder.email"]}"/>
                                         <button class="btn-clear"></button>
                                     </div>
                                     <div class="input-control password">
-                                        <input type="password" value="" id="senha" name="usuario.password.senha" placeholder="Senha"/>
+                                        <input type="password" value="" id="senha" name="usuario.password.senha" placeholder="${t["cadastro.placeholder.senha"]}"/>
                                         <button class="btn-reveal"></button>
                                     </div>
                                     <div class="input-control password">
-                                        <input type="password" value="" id="versenha" placeholder="Repita a senha"/>
+                                        <input type="password" value="" id="verificacaoSenha" placeholder="${t["cadastro.placeholder.repete"]}"/>
                                         <button class="btn-reveal"></button>
                                     </div>
-                                    <input type="submit" class="bg-green fg-white" value="Salvar"/>
-                                    <input type="button" class="bg-orange fg-white" value="Cancelar"/>
+                                    <input type="submit" id="salvarUser" class="bg-green fg-white" value="${t["btn.enviar"]}"/>
+                                    <input type="button" class="bg-orange fg-white" value="${t["btn.cancelar"]}"/>
                                 </form>
                             </div>
                         </div>
@@ -60,55 +59,56 @@
             </center>
         </div>
         <script type="text/javascript">
-            /*
-             $(function () {
-             $('#form-novo-usuario').on('submit', function (event) {
-             event.preventDefault();
-             var nome = $('#nome').val();
-             var mail = $('#email').val();
-             var login = $('#login').val();
-             var senha = $('#senha').val();
-             
-             if (nome == '') {
-             $('#nome').addClass("fg-red text-italic").val('Informe o nome');
-             }
-             if (mail == '') {
-             $('#email').addClass("fg-red text-italic").val('Informe o email');
-             }
-             if (login == '') {
-             $('#login').addClass("fg-red text-italic").val('Informe o login');
-             }
-             if (senha == '') {
-             $('#senha').addClass("fg-red text-italic").attr("type", 'text').val('Informe a senha');
-             }
-             });
-             
-             //REMOVER ALERTAS DE ERRO
-             $('#nome').focusin(function () {
-             $(this).val('').removeClass('fg-red text-italic');
-             });
-             $('#email').focusin(function () {
-             $(this).val('').removeClass('fg-red text-italic');
-             });
-             $('#login').focusin(function () {
-             $(this).val('').removeClass('fg-red text-italic');
-             });
-             $('#senha').focusin(function () {
-             $(this).val('').attr("type", "password").removeClass('fg-red text-italic');
-             });
-             $('#versenha').focusin(function () {
-             $(this).val('').attr("type", "password").removeClass('fg-red text-italic');
-             });
-             
-             $('#versenha').blur(function () {
-             var senha = $('#senha').val();
-             var aux = $(this).val();
-             
-             if (senha != aux) {
-             $(this).addClass("fg-red text-italic").attr("type", 'text').val('Senha não confere');
-             }
-             });
-             });*/
+
+            $(function () {
+                $('#salvarUser').on('click', function (event) {
+                    var nome = $('#nome').val();
+                    var login = $('#login').val();
+                    var senha = $('#senha').val();
+                    var verificacaoSenha = $('#verificacaoSenha').val();
+                    var submitForm = true;
+                    if (nome === '') {
+                        $('#nome').addClass("fg-red text-italic").val('Informe o nome');
+                        submitForm = false;
+                    }
+
+                    if (login === '') {
+                        $('#login').addClass("fg-red text-italic").val('Informe o login');
+                        submitForm = false;
+                    }
+
+                    if (senha === '') {
+                        $('#senha').addClass("fg-red text-italic").attr("type", 'text').val('Informe a senha');
+                        submitForm = false;
+                    }
+
+                    if (verificacaoSenha === '') {
+                        $('#verificacaoSenha').addClass("fg-red text-italic").attr("type", 'text').val('Informe novamente a senha');
+                        submitForm = false;
+                    } else if (senha !== verificacaoSenha) {
+                        $('#verificacaoSenha').addClass("fg-red text-italic").attr("type", 'text').val('Senha não confere!');
+                        submitForm = false;
+                    }
+
+                    if (submitForm) {
+                        $("#form-novo-usuario").submit();
+                    }
+
+                });
+                //REMOVER ALERTAS DE ERRO
+                $('#nome').focusin(function () {
+                    $(this).val('').removeClass('fg-red text-italic');
+                });
+                $('#login').focusin(function () {
+                    $(this).val('').removeClass('fg-red text-italic');
+                });
+                $('#senha').focusin(function () {
+                    $(this).val('').attr("type", "password").removeClass('fg-red text-italic');
+                });
+                $('#verificacaoSenha').focusin(function () {
+                    $(this).val('').attr("type", "password").removeClass('fg-red text-italic');
+                });
+            });
         </script>
     </body>
 </html>

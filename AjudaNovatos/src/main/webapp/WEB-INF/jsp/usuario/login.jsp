@@ -16,53 +16,15 @@
     <body class="metro">
         <c:import url="../componentes/header.jsp"/>
         <div class="container">
-            <div class="grid fluid">
-                <div class="row" style="margin-top: 5%">
-                    <div class="span6">
-                        <div class="panel text-left">
-                            <div class="panel-header bg-darkOrange fg-white">
-                                Não possuo cadastro
-                            </div>
-                            <div class="panel-content padding10">
-                                <div class="success">
-                                    <c:out value="${successo}"/>
-                                </div>
-                                <h4>Cadastrar</h4>
-                                <form method="post" action="<c:url value="/usuario/salvar"/>" id="form-novo-usuario">
-                                    <div class="input-control text">
-                                        <input type="text" value="" id="nome" name="usuario.nome" placeholder="Nome"/>
-                                        <button class="btn-clear"></button>
-                                    </div>
-                                    <div class="input-control text">
-                                        <input type="text" value="" id="email" name="usuario.email" placeholder="E-mail"/>
-                                        <button class="btn-clear"></button>
-                                    </div>
-                                    <div class="input-control text">
-                                        <input type="text" value="" id="login" name="usuario.login" placeholder="Login"/>
-                                        <button class="btn-clear"></button>
-                                    </div>
-                                    <div class="input-control password">
-                                        <input type="password" value="" id="senha" name="usuario.password.senha" placeholder="Senha"/>
-                                        <button class="btn-reveal"></button>
-                                    </div>
-                                    <div class="input-control password">
-                                        <input type="password" value="" id="versenha" placeholder="Repita a senha"/>
-                                        <button class="btn-reveal"></button>
-                                    </div>
-                                    <input type="submit" class="bg-green fg-white" value="Salvar"/>
-                                    <input type="button" class="bg-orange fg-white" value="Cancelar"/>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="span1"></div>
-                    <div class="span5">
-                        <div class="panel">
+            <c:import url="../componentes/internacionalizacao.jsp"/>
+            <center>
+                <div class="grid">
+                    <div class="span8 padding20">
+                        <div class="panel text-left margin10">
                             <div class="panel-header bg-darkGreen fg-white">
-                                Já possuo cadastro
+                                ${t["login.div.titulo"]}
                             </div>
                             <div class="panel-content">
-                                <h4>Acessar</h4>
                                 <c:if test="${errors!=null}">
                                     <div class="fg-red padding5 ">
                                         <c:forEach var="error" items="${errors}">
@@ -70,7 +32,7 @@
                                         </c:forEach>
                                     </div>
                                 </c:if>
-                                <form action="<c:url value="/login"/>" method="POST">
+                                <form action="<c:url value="/login"/>" method="POST" id="formLogin">
                                     <div class="row">
                                         <div class="input-control text" style="margin-top: 2%">
                                             <input type="text" id="login" name="login" value="" placeholder="login" style="height: 40px"/>
@@ -78,7 +40,7 @@
                                         </div>
                                     </div>
                                     <div class="row" style="margin-top: 2%">
-                                        <div class="input-control text">
+                                        <div class="input-control text bg-red">
                                             <input type="password" id="senha" name="senha" value="" placeholder="senha" style="height: 40px"/>
                                             <button class="btn-clear"></button>
                                         </div>
@@ -86,12 +48,16 @@
                                     <div class="grid fluid">
                                         <div class="row">
                                             <div class="span6">
-                                                <input type="submit" value="Acessar"/>
-                                                <a class="button" href="<c:url value="/"/>"> Cancelar</a>
+                                                <input type="button" value="${t["btn.enviar"]}" id="btnLogin"/>
+                                                <a class="button" href="<c:url value="/"/>"> ${t["btn.cancelar"]} </a>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="span6">
+                                                <span class=""></span><a  href='<c:url value="${t['url.form.usuario']}"/>' class="fg-orange"> ${t["login.label.cadastro"]}</a>
                                             </div>
                                             <div class="span6">
-                                                <!--<a  href='c:url value="/usuario/formulario"/>'>Nao tenho cadastro</a> |-->
-                                                <span class="icon-lamp-2"></span><a  href='#' class="fg-orange">Esqueci minha senha</a>
+                                                <span class="icon-lamp-2"></span><a  href='#' class="fg-orange"> ${t["login.label.senha"]}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -100,8 +66,36 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </center>
         </div>
+        <script type="text/javascript">
 
+            $(function () {
+                $('#btnLogin').on('click', function (event) {
+                    var login = $('#login').val();
+                    var senha = $('#senha').val();
+                    var submitForm = true;
+                    if (login === '') {
+                        $('#login').closest(".input-control").addClass("bg-red").val('Informe o login');
+                        submitForm = false;
+                    }
+                    if (senha === '') {
+                        $('#senha').addClass("fg-red text-italic").attr("type", 'text').val('Informe a senha');
+                        submitForm = false;
+                    }
+                    if (submitForm) {
+                        $("#formLogin").submit();
+                    }
+                });
+
+                //REMOVER ALERTAS DE ERRO
+                $('#login').focusin(function () {
+                    $(this).val('').removeClass('fg-red text-italic');
+                });
+                $('#senha').focusin(function () {
+                    $(this).val('').removeClass('fg-red text-italic');
+                });
+            });
+        </script>
     </body>
 </html>

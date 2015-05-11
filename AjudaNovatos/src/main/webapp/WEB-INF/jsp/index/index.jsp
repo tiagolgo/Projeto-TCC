@@ -7,56 +7,37 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <%@page errorPage="../erros/404.jsp" %>
-
 <!DOCTYPE html>
-<html>
+<html lang="pt">
     <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Ajuda Novatos</title>
     </head>
     <body class="metro">
         <!-- menu topo -->
         <c:import url="../componentes/header.jsp"/>
         <div class="container">
+            <c:import url="../componentes/internacionalizacao.jsp"/>
             <div class="grid fluid" >
                 <div class="row" style="height: 300px">
                     <fieldset>
                         <legend>
-                            <h1 class="heading">Ajuda Novatos</h1>     
+                            <h1 class="heading">Ajuda Novatos</h1>   
                         </legend>
-                        <h3> FLOSS Coach creators are researchers who want to help newcomers to Open Source
-                        </h3>
-                        <p>
-                            Have you ever thought about contributing to an Open Source Project? Have your tried? Was it to hard?
-                        </p>
-                        <p>
-                            Use the Forum to give your overall feedback, to tell us any good or bad experience you had joining Open Source Software projects, or to discuss and leave tips to other newcomers that are interested in joining projects.
-                        </p>
+                        <h3>${t["index.dash.titulo"]}</h3>
+                        <p>${t["index.dash.texto"]}</p>
                     </fieldset>
-                    <!--
-                    <div class="span4" style="min-height: 300px">
-                        <div class="panel">
-                            <div class="panel-header">Cadastre seu Projeto</div>
-                            <div class="panel-content text-justify">
-                                <p>
-                                    Se você possui um projeto e gostaria de disponibilizá-lo, faça-o aqui.
-                                </p>
-                                <div class="text-center">
-                                    <a href='c:url value="/projeto/novo"/>' class=" button large fg-white bg-darkGreen" style="width: 100%"><b>Cadastrar</b></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    -->
                 </div>
                 <div class="row">
                     <!-- PROJETOS ADICIONADOS -->
                     <div class="span4">
                         <div class="panel">
-                            <div class="panel-header" style="border-top: 2px solid #004e9d; color: #004e9d">Projetos</div>
+                            <div class="panel-header" style="border-top: 2px solid #004e9d; color: #004e9d">${t["index.list.projetos"]}</div>
                             <div class="panel-content">
-                                <c:forEach var="projeto" items="${projetosLista}">
+                                <c:forEach var="projeto" items="${informacoesProjetos.projetos}">
                                     <div class="listview small">
-                                        <a href="<c:url value="/projeto/${projeto.id}"/>" class="list">
+                                        <a href="#" class="list">
                                             <div class="list-content">
                                                 <img src="/AjudaNovatos/images/word.png" class="icon">
                                                 <div class="data">
@@ -67,7 +48,6 @@
                                         </a>
                                     </div>  
                                 </c:forEach>
-
                             </div>
                         </div>
                     </div>
@@ -76,17 +56,17 @@
                     -->
                     <div class="span4">
                         <div class="panel">
-                            <div class="panel-header" style="border-top: 2px solid darkred;color: darkred">Linguagens</div>
+                            <div class="panel-header" style="border-top: 2px solid darkred;color: darkred">${t["index.list.linguagens"]}</div>
                             <div class="panel-content">
-                                <c:forEach var="linguagem" items="${linguagens.getLinguagens()}">
+                                <c:forEach var="linguagem" items="${informacoesProjetos.linguagens}">
                                     <div class="listview small">
-                                        <a href="<c:url value="/projeto/linguagem/${linguagem[1]}"/>" class="list">
+                                        <a href="#" class="list">
                                             <div class="list-content">
                                                 <img src="/AjudaNovatos/images/word.png" class="icon">
                                                 <div class="data">
                                                     <span class="list-title"><c:out value="${linguagem[1]}"/></span>
                                                     <!--<div class="progress-bar small" data-role="progress-bar" data-value="75"></div>-->
-                                                    <span class="list-remark"><c:out value="${linguagem[0]}"/> projeto</span>                                                </div>
+                                                    <span class="list-remark"><c:out value="${linguagem[0]}"/> </span>                                                </div>
                                             </div>
                                         </a>
                                     </div>  
@@ -99,10 +79,10 @@
                     -->
                     <div class="span4">
                         <div class="panel">
-                            <div class="panel-header" style="border-top: 2px solid #004e9d; color: #004e9d">Novidades</div>
+                            <div class="panel-header" style="border-top: 2px solid #004e9d; color: #004e9d">${t["index.list.novidades"]}</div>
                             <div class="panel-content">
                                 <div class="listview small">
-                                    <c:forEach var="recentes" items="${projetosRecentes}">
+                                    <c:forEach var="recentes" items="${informacoesProjetos.projetosRecentes}">
                                         <a href="<c:url value="/projeto/${recentes.id}"/>" class="list">
                                             <div class="list-content">
                                                 <img src="/AjudaNovatos/images/word.png" class="icon">
@@ -126,7 +106,6 @@
                         <div class="panel">
                             <div class="panel-content bg-lightRed">
                                 <div class="span3">
-
                                 </div>
                             </div>
                         </div>
@@ -146,7 +125,7 @@
         </div>           
         <script>
             $(function () {
-                
+
                 var nota;
                 $("#rating_1").rating({
                     static: false,
@@ -156,7 +135,7 @@
                     showScore: true,
                     click: function (value, rating) {
                         rating.rate(value);
-                        nota=value;
+                        nota = value;
                     }
                 });
             });

@@ -15,9 +15,9 @@
     </head>
     <body class="metro">
         <c:import url="../componentes/header.jsp"/>
-        <div class="container" style="margin-top: 4%">
+        <div class="container">
+            <c:import url="../componentes/internacionalizacao.jsp"/>
             <center>
-
                 <div class="grid">
                     <div class="span8">
                         <div class="success">
@@ -28,7 +28,7 @@
                                 Dados Cadastrais
                             </div>
                             <div class="panel-content padding10">
-                                <form method="post" action="<c:url value="/usuario/salvar"/>" id="form-novo-usuario">
+                                <form method="post" action="<c:url value="${['url.salvar.usuario']}"/>" id="form-novo-usuario">
                                     <div class="input-control text">
                                         <input type="text" id="nome" name="usuario.nome" value="${usuario.nome}" placeholder="Nome"/>
                                         <button class="btn-clear"></button>

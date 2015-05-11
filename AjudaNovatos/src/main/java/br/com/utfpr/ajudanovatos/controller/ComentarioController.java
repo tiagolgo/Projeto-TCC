@@ -21,22 +21,12 @@ import javax.inject.Inject;
 @Controller
 public class ComentarioController {
 
-    private final Result result;
-    private final Validator validator;
-    private final DaoComentario dao;
-
-    public ComentarioController() {
-        this.result = null;
-        this.validator = null;
-        this.dao = null;
-    }
-
     @Inject
-    public ComentarioController(Result result, Validator validator, DaoComentario dao) {
-        this.result = result;
-        this.validator = validator;
-        this.dao = dao;
-    }
+    private Result result;
+    @Inject
+    private Validator validator;
+    @Inject
+    private DaoComentario dao;
 
     @Get("/adicionarComentario")
     public void adicionaComentario(Long id_alvo, String alvo, String comentario_autor, String comentario_texto, String comentario_data, int nota) {

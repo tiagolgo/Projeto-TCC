@@ -8,6 +8,7 @@ package Dao.especificos;
 import Dao.Dao_Basic;
 import br.com.utfpr.ajudanovatos.projeto.infos.Linguagem;
 import br.com.utfpr.ajudanovatos.projeto.Projeto;
+import br.com.utfpr.ajudanovatos.projeto.beans.LinguagemBean;
 import br.com.utfpr.ajudanovatos.projeto.beans.ProjetoBean;
 import java.util.List;
 import javax.inject.Inject;
@@ -103,14 +104,14 @@ public class DaoProjeto extends Dao_Basic<Projeto> {
     }
 
     public List getProjetoLinguagem(String linguagem) {
-        Criteria projeto = session.createCriteria(Projeto.class)
+        Criteria projeto = session.createCriteria(classe)
                 .createCriteria("linguagens")
                 .add(Restrictions.eq("texto", linguagem));
         return projeto.list();
     }
 
     public Object projetoCount() {
-        Criteria c = session.createCriteria(Projeto.class);
+        Criteria c = session.createCriteria(classe);
         c.setProjection(Projections.rowCount());
         return c.uniqueResult();
     }
@@ -149,9 +150,8 @@ public class DaoProjeto extends Dao_Basic<Projeto> {
         }
     }
 
-    
     public boolean removeFeed(Long id) {
-        System.out.println("feed a ser removido "+id);    
+        System.out.println("feed a ser removido " + id);
         try {
             SQLQuery q = session.createSQLQuery("delete from feed where id = " + id);
             q.executeUpdate();
@@ -160,9 +160,5 @@ public class DaoProjeto extends Dao_Basic<Projeto> {
             e.printStackTrace();
             return false;
         }
-    }
-    
-    public void persisteComentario(String classe){
-        
     }
 }

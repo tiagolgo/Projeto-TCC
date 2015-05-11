@@ -19,10 +19,12 @@ C:\Projeto-TCC\AjudaNovatos\src\main\java\Conexao\ConexaoBanco.java
 C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\controller\IndexController.java
 C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\infos\Repositorio.java
 C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\controller\LoginController.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\beans\LinguagemBean.java
 C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\controller\ProjetoController.java
 C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\infos\Plataforma.java
 C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\Entendendo_Codigo.java
 C:\Projeto-TCC\AjudaNovatos\src\main\java\Interceptor\Set_Infos.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\controller\LocaleController.java
 C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\beans\ProjetoBean.java
 C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\Como_Iniciar.java
 C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\entidade\usuario\Usuario.java
@@ -30,6 +32,7 @@ C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\Proj
 C:\Projeto-TCC\AjudaNovatos\src\main\java\Dao\Dao.java
 C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Feed.java
 C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\controller\ComentarioController.java
+C:\Projeto-TCC\AjudaNovatos\src\main\java\Dao\especificos\DaoLinguagem.java
 C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\comentario\Comentario.java
 C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\Submeter_Mudanca.java
 C:\Projeto-TCC\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Chat_Irc.java

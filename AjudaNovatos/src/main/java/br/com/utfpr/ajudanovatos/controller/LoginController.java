@@ -23,29 +23,18 @@ import javax.inject.Inject;
 @Controller
 public class LoginController {
 
-    private final Result result;
-    private final Validator validator;
-    private final DaoUsuario du;
-    private final UsuarioLogado ul;
-
-    public LoginController() {
-        this.result = null;
-        this.validator = null;
-        this.du = null;
-        this.ul = null;
-    }
-
     @Inject
-    public LoginController(Result result, Validator validator, DaoUsuario du, UsuarioLogado ul) {
-        this.result = result;
-        this.validator = validator;
-        this.du = du;
-        this.ul = ul;
-    }
+    private Result result;
+    @Inject
+    private Validator validator;
+    @Inject
+    private DaoUsuario du;
+    @Inject
+    private UsuarioLogado ul;
 
     @Post("/login")
     public void login(String login, String senha) {
-        this.validator.addIf(login == null || senha==null, new SimpleMessage("login", "Login ou Senha invalidos"));
+        this.validator.addIf(login == null || senha == null, new SimpleMessage("login", "Login ou Senha invalidos"));
         this.validator.onErrorForwardTo(UsuarioController.class).login();
         Usuario user = du.getUserAutenticado(login, senha);
         this.validator.addIf(user == null, new SimpleMessage("user-login", "Usuário não encontrado"));

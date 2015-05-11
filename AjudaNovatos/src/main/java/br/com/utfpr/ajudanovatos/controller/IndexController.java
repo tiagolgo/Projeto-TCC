@@ -5,11 +5,10 @@
  */
 package br.com.utfpr.ajudanovatos.controller;
 
+import Dados_Globais.Dados;
 import Dao.especificos.DaoProjeto;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
-import br.com.caelum.vraptor.Result;
-import br.com.utfpr.ajudanovatos.projeto.Projeto;
 import br.com.utfpr.ajudanovatos.projeto.beans.ProjetoBean;
 import java.util.List;
 import javax.inject.Inject;
@@ -21,28 +20,24 @@ import javax.inject.Inject;
 @Controller
 public class IndexController {
 
-    private final Result result;
-    private final DaoProjeto dp;
-
-    public IndexController() {
-        this.result = null;
-        this.dp = null;
-    }
-
     @Inject
-    public IndexController(Result result, DaoProjeto d) {
-        this.result = result;
-        this.dp = d;
-    }
+    private DaoProjeto dp;
+    @Inject
+    private Dados informacoes;
 
-    @Path("/")
+    @Path(value = {"/"})
     public void index() {
-        try {
-            List<ProjetoBean> projetos = this.dp.getPaginacao(0, 10);
+        System.out.println("no index controle");
+        if (!this.informacoes.isAtualizado()) {
             List<ProjetoBean> recentes = this.dp.getRecentes();
-            this.result.include("projetosLista", projetos).include("projetosRecentes", recentes);
-        } catch (Exception e) {
-            System.out.println(e.getCause());
+            List<ProjetoBean> projetos = this.dp.getPaginacao(0, 10);
+            List linguagens = this.dp.getLinguagens();
+            //Object projetoCount = this.dp.projetoCount();
+            this.informacoes.setAtualizado(true);
+            this.informacoes.setLinguagens(linguagens);
+            this.informacoes.setProjetos(projetos);
+            this.informacoes.setProjetosRecentes(recentes);
+            //this.informacoes.setTotalProjetos((Integer.parseInt(projetoCount.toString())));
         }
     }
 }

@@ -17,15 +17,15 @@
     <body class="metro">
         <c:import url="../componentes/header.jsp" />
         <div class="container">
+            <c:import url="../componentes/internacionalizacao.jsp"/>
             <div class="span10 offset2">
                 <fieldset style="margin-top: 10%">
                     <legend class="fg-blue">Meus Projetos</legend>
-
                     <c:choose>
                         <c:when test="${projetosUser.size()==0}">
-                            <p style="font-size: 20px">Voce não tem projetos</p>
+                            <p style="font-size: 20px">${t["sem.projeto"]}</p>
                             <p style="margin-top: 50px">
-                                <a href='<c:url value="/projeto/novo"/>'>Clique aqui e cadastre um projeto</a>
+                                <a href='<c:url value="${t['url.novo.projeto']}"/>'>${t["cadastar.projeto"]}</a>
                             </p>
                         </c:when>
                         <c:otherwise>
@@ -33,9 +33,9 @@
                                 <div class="row border margin5 padding5 text-left">
                                     <h4>${projeto.nome}</h4>
                                     <p>Criacao: ${projeto.dataCriacao}</p>
-                                    <a class="button small" href="<c:url value="/editar-projeto/${projeto.id}"/>"> Editar</a>
+                                    <a class="button small" href="<c:url value="${['url.editar.projeto.id']}/${projeto.id}"/>"> Editar</a>
                                     <input class="button small" type="button" value="Remover" onclick="removerProjeto(${projeto.id});"/>
-                                    <form id="projeto_${projeto.id}" action="<c:url value="/remove-projeto"/>" method="post">
+                                    <form id="projeto_${projeto.id}" action="<c:url value="${['url.remove.projeto']}"/>" method="post">
                                         <input type="hidden" name="projeto"  value="${projeto.id}"/>
                                         <input type="hidden" name="_method" value="DELETE"/>
                                     </form>
@@ -43,7 +43,6 @@
                             </c:forEach>
                         </c:otherwise>
                     </c:choose>
-
                     <script>
                         function removerProjeto(id) {
                             var c = confirm("Deseja realmente remover o projeto?");

@@ -17,6 +17,7 @@
     <body class="metro">
         <c:import url="../componentes/header.jsp" />
         <div class="container">
+            <c:import url="../componentes/internacionalizacao.jsp"/>
             <c:choose>
                 <c:when test="${option=='update'}">
                     <h1 style="margin-top: 2%;margin-bottom: 2%">Alterar projeto</h1>
@@ -25,7 +26,7 @@
                     <h1 style="margin-top: 2%;margin-bottom: 2%">Adicionar projeto</h1>
                 </c:otherwise>
             </c:choose>
-            <form id="dados-form" method="POST" action="<c:url value="/projeto/salvar"/>" enctype="multipart/form-data">
+            <form id="dados-form" method="POST" action="<c:url value="${t['url.salvar.projeto']}"/>" enctype="multipart/form-data">
                 <input type="hidden" name="projeto.id" value="${projeto.id}"/>
                 <div class="tab-control" data-role="tab-control">
                     <ul class="tabs">
@@ -38,7 +39,7 @@
                         <li id="tab7"><a href="#tab_7">Submissão de Mudanças</a></li>
                         <li style="width: auto;float: right; text-align: right">
                             <input style="height: 30px" type="submit" class="bg-green fg-white" value="Salvar">
-                            <a href='/AjudaNovatos' class="bg-orange fg-white button"> Cancelar</a>
+                            <a href='<c:url value="${t['url.home']}"/>' class="bg-orange fg-white button"> Cancelar</a>
                         </li>
                     </ul>
 
@@ -475,6 +476,5 @@
             });
         </script>
         <script type="text/javascript" src="/AjudaNovatos/js/projeto-form.js"></script>
-
     </body>
 </html>

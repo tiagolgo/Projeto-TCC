@@ -33,13 +33,15 @@
     </head>
     <body class="metro">
         <c:import url="../componentes/header.jsp"/>
-        <div class="container" style="margin-top: 4%">
-            <h2 class="text-bold">Lista de Projetos</h2>
+        <div class="container">
+            <c:import url="../componentes/internacionalizacao.jsp"/>
+
+            <h2 class="text-bold">${t["projetos.titulo"]}</h2>
             <br/>
             <div class="row">
                 <div style="float: left">
                     <form class="left" method="post" id="frm-filtro">
-                        Exibir
+                        ${t["projetos.exibir"]}
                         <div class="input-control select size1" data-role="input-control">
                             <select id="table-size">
                                 <option>10</option>
@@ -47,13 +49,13 @@
                                 <option>30</option>
                             </select>
                         </div>
-                        Resultados
+                        ${t["projetos.resultados"]}
                     </form>
                 </div>
                 <div style="float: right">
                     <form class="right" method="post" id="frm-filtro">
                         <div class="input-control text">
-                            <input type="text" id="pesquisar" placeholder="Pesquisar projeto" name="pesquisar" size="30"/>
+                            <input type="text" id="pesquisar" placeholder="${t["projetos.input.pesquisa"]}" name="pesquisar" size="30"/>
                             <!--<button class="btn-clear"></button>-->
                         </div>
                     </form>
@@ -62,10 +64,10 @@
             <table id="projetos" class="table tablesorter hovered">
                 <thead>
                     <tr>
-                        <th><span>Projeto</span></th>
-                        <th><span>Plataforma</span></th>
-                        <th><span>Linguagem</span></th>
-                        <th><span>Criação</span></th>
+                        <th><span>${t["projetos.tab.col0"]}</span></th>
+                        <th><span>${t["projetos.tab.col1"]}</span></th>
+                        <th><span>${t["projetos.tab.col2"]}</span></th>
+                        <th><span>${t["projetos.tab.col3"]}</span></th>
                     </tr>
                 </thead>
                 <tbody>
