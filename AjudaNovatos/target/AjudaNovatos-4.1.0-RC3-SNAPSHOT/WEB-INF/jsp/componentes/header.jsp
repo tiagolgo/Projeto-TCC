@@ -95,7 +95,7 @@
                     <c:choose>
                         <c:when test="${userLogado.logado==false}">
                             <!-- Se nao estiver logado -->
-                            <a href='<c:url value="${t['url.btn.login']}"/>' class="element place-right" style='font-size: 18px'  data-hint-position="left" data-hint="Acessar o sistema"><span class="icon-enter"></span> <fmt:message key="btn.login"/></a>
+                            <a href='<c:url value="${t['url.btn.login']}"/>' class="element place-right" style='font-size: 18px'  data-hint-position="left" data-hint="Acessar o sistema"><span class="icon-enter"></span> ${t["btn.login"]}</a>
                         </c:when>
                         <c:otherwise>
                             <!-- Se estiver logado -->

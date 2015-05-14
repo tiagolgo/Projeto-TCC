@@ -16,14 +16,14 @@
             .redondo{
                 margin-left: 10px;
                 height: 15px;
-                border-radius: 2px;
+                //border-radius: 1px;
             }
         </style>
     </head>
     <body class="metro">
         <div class="row no-margin no-padding">
-            <a href="<c:url value="/pt"/>"><img src="/AjudaNovatos/images/bandeira_brasil.jpg" class="place-right redondo"></a>
-            <a href="<c:url value="/en"/>"><img src="/AjudaNovatos/images/bandeira_eua.jpg" class="icon place-right redondo"></a>
+            <a href="<c:url value="/pt"/>" title="PT"><img src="/AjudaNovatos/images/bandeira_brasil.jpg" class="place-right redondo"></a>
+            <a href="<c:url value="/en"/>" title="EN"><img src="/AjudaNovatos/images/bandeira_eua.jpg" class="icon place-right redondo"></a>
         </div>
     </body>
 </html>

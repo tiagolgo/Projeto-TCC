@@ -25,6 +25,7 @@
                         <legend>
                             <h1 class="heading">Ajuda Novatos</h1>   
                         </legend>
+                        <a href="<c:url value="/upload/form"/>">Upload de Imagem</a>
                         <h3>${t["index.dash.titulo"]}</h3>
                         <p>${t["index.dash.texto"]}</p>
                     </fieldset>
@@ -60,7 +61,7 @@
                             <div class="panel-content">
                                 <c:forEach var="linguagem" items="${informacoesProjetos.linguagens}">
                                     <div class="listview small">
-                                        <a href="#" class="list">
+                                        <a href="<c:url value="${t['url.projeto.linguagem']}${linguagem[1]}"/>" class="list">
                                             <div class="list-content">
                                                 <img src="/AjudaNovatos/images/word.png" class="icon">
                                                 <div class="data">
@@ -83,7 +84,7 @@
                             <div class="panel-content">
                                 <div class="listview small">
                                     <c:forEach var="recentes" items="${informacoesProjetos.projetosRecentes}">
-                                        <a href="<c:url value="/projeto/${recentes.id}"/>" class="list">
+                                        <a href="<c:url value="${t['url.buscar.projeto.id']}${recentes.id}"/>" class="list">
                                             <div class="list-content">
                                                 <img src="/AjudaNovatos/images/word.png" class="icon">
                                                 <div class="data">

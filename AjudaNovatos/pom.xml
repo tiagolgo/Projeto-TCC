@@ -47,7 +47,7 @@
             <artifactId>javax.inject</artifactId>
             <version>1</version>
             <!-- uncomment this line on app servers -->
-            <!-- <scope>provided</scope> -->
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -119,6 +119,11 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-envers</artifactId>
             <version>4.3.7.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3</version>
         </dependency>
         <dependency>
             <groupId>javax</groupId>

@@ -22,6 +22,14 @@ import java.time.LocalDate;
 import java.util.List;
 import javax.inject.Inject;
 import org.hibernate.HibernateException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.ServletContext;
+import org.apache.commons.io.IOUtils;
 
 /**
  *
@@ -40,10 +48,12 @@ public class ProjetoController {
     private Validator validator;
     @Inject
     private Dados dados;
+    @Inject
+    Upload_File upload;
 
     @Get(value = {"pt/novo/projeto", "en/new/project"})
     public void formulario() {
-        this.validator.addIf(!this.usuario.isLogado(), new SimpleMessage("login", "E necessario estar logado!"));
+        this.validator.addIf(!this.usuario.isLogado(), new SimpleMessage("login", "login.necessario"));
         this.validator.onErrorForwardTo(UsuarioController.class).login();
     }
 
@@ -54,7 +64,7 @@ public class ProjetoController {
     }
 
     @Post(value = {"pt/salvar/projeto", "en/save/project"})
-    public void salvar(Projeto projeto) {
+    public void salvar(Projeto projeto, UploadedFile logo) {
         projeto.setDataCriacao(LocalDate.now().toString());
         projeto.setUsuario(this.usuario.getId());
 
@@ -157,5 +167,14 @@ public class ProjetoController {
         } else {
             this.result.notFound();
         }
+    }
+
+    @Post("/uploadImagem")
+    public void salvaImagem(UploadedFile imagem) {
+      this.upload.salva(imagem);
+    }
+
+    @Get("/upload/form")
+    public void uploadImagem() {
     }
 }

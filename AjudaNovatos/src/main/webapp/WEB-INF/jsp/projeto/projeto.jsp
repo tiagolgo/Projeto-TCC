@@ -46,13 +46,13 @@
             </div>
             <div class="tab-control" data-role="tab-control">
                 <ul class="tabs">
-                    <li class="active" class="bg-hover-lightBlue"><a href="#tab_1" id="tab1">${["tab.sobre"]}</a></li>
-                    <li><a href="#tab_2" id="tab2" class="bg-hover-lightBlue">${["tab.requisitos"]}</a></li>
-                    <li><a href="#tab_3" id="tab3" class="bg-hover-lightBlue">${["tab.comoiniciar"]}</a></li>
-                    <li><a href="#tab_5" id="tab4" class="bg-hover-lightBlue">${["tab.contato"]}</a></li>
-                    <li><a href="#tab_4" id="tab5" class="bg-hover-lightBlue">${["tab.workspace"]}</a></li>
-                    <li><a href="#tab_6" id="tab6" class="bg-hover-lightBlue">${["tab.entender"]}</a></li>
-                    <li><a href="#tab_7" id="tab7" class="bg-hover-lightBlue">${["tab.contribuicao"]}</a></li>
+                    <li class="active" class="bg-hover-lightBlue"><a href="#tab_1" id="tab1">${t["tab.sobre"]}</a></li>
+                    <li><a href="#tab_2" id="tab2" class="bg-hover-lightBlue">${t["tab.requisitos"]}</a></li>
+                    <li><a href="#tab_3" id="tab3" class="bg-hover-lightBlue">${t["tab.comoiniciar"]}</a></li>
+                    <li><a href="#tab_5" id="tab4" class="bg-hover-lightBlue">${t["tab.contato"]}</a></li>
+                    <li><a href="#tab_4" id="tab5" class="bg-hover-lightBlue">${t["tab.workspace"]}</a></li>
+                    <li><a href="#tab_6" id="tab6" class="bg-hover-lightBlue">${t["tab.entender"]}</a></li>
+                    <li><a href="#tab_7" id="tab7" class="bg-hover-lightBlue">${t["tab.contribuicao"]}</a></li>
                 </ul>
 
                 <div class="frames" >
@@ -66,15 +66,15 @@
                         <div class="grid fluid">
                             <div class="row">
                                 <div class="span6">
-                                    <p><span class="text-bold">${["projeto.pagina"]}</span><a href="http://<c:out value="${projeto.site}"/>" target="_blank">${projeto.site}</a></p>
-                                    <p><span class="text-bold">${["projeto.bug"]}</span> <a href="http://<c:out value="${projeto.gestorBug}"/>" target="_blank">${projeto.gestorBug}</a></p>
-                                    <p><span class="text-bold">${["projeto.repositorio"]}</span><a href="http://<c:out value="${projeto.repositorio.link}"/>" target="_blank">${projeto.repositorio.link}</a></p>
-                                    <p><span class="text-bold">${["projeto.lista"]}</span><a href="<c:out value="${projeto.listaDiscussao}"/>" target="_blank">${projeto.listaDiscussao}</a></p>
-                                    <p><span class="text-bold">${["projeto.wiki"]}</span><a href="<c:out value="${projeto.wiki}"/>" target="_blank">${projeto.wiki}</a></p>
-                                    <p><span class="text-bold">${["projeto.plataforma"]}</span>                                        
+                                    <p><span class="text-bold">${t["projeto.pagina"]}</span><a href="http://<c:out value="${projeto.site}"/>" target="_blank">${projeto.site}</a></p>
+                                    <p><span class="text-bold">${t["projeto.bug"]}</span> <a href="http://<c:out value="${projeto.gestorBug}"/>" target="_blank">${projeto.gestorBug}</a></p>
+                                    <p><span class="text-bold">${t["projeto.repositorio"]}</span><a href="http://<c:out value="${projeto.repositorio.link}"/>" target="_blank">${projeto.repositorio.link}</a></p>
+                                    <p><span class="text-bold">${t["projeto.lista"]}</span><a href="<c:out value="${projeto.listaDiscussao}"/>" target="_blank">${projeto.listaDiscussao}</a></p>
+                                    <p><span class="text-bold">${t["projeto.wiki"]}</span><a href="<c:out value="${projeto.wiki}"/>" target="_blank">${projeto.wiki}</a></p>
+                                    <p><span class="text-bold">${t["projeto.plataforma"]}</span>                                        
                                         <span class="fg-lightBlue"><c:out value="${projeto.plataformas.toString().replace('[','').replace(']','')}"/></span>
                                     </p>
-                                    <p><span class="text-bold">${["projeto.linguagem"]}</span>
+                                    <p><span class="text-bold">${t["projeto.linguagem"]}</span>
                                         <span class="fg-lightBlue"><c:out value="${projeto.linguagens.toString().replace('[','').replace(']','')}"/></span>
                                     </p>
                                 </div>
@@ -93,7 +93,7 @@
                             <div class="row">
                                 <div class="span7">
                                     <fieldset style="line-height: 100px">
-                                        <legend class="fg-darkBlue">${["requisito.basico"]}<span class="default fg-green rating_nota place-right"></span></legend>                                        
+                                        <legend class="fg-darkBlue">${t["requisito.basico"]}<span class="default fg-green rating_nota place-right"></span></legend>                                        
                                             ${projeto.requisito.requisitosBasico}
                                         <script type="text/javascript" src="${projeto.openHub}/widgets/project_languages.js"></script>
                                     </fieldset>
@@ -102,7 +102,7 @@
                                 <!-- Requisitos adicionais -->
                                 <div class="span7" style="float: right">
                                     <fieldset>
-                                        <legend class="fg-darkBlue">${["requisito.adicional"]}<span class="default fg-green rating_nota place-right"></span></legend>
+                                        <legend class="fg-darkBlue">${t["requisito.adicional"]}<span class="default fg-green rating_nota place-right"></span></legend>
                                             ${projeto.requisito.requisitosAdicionais}
                                     </fieldset>
                                 </div>
@@ -156,50 +156,50 @@
                         <p>Aqui você encontra informações de como iniciar no projeto.</p>
                         <div class="tab-control" data-role="tab-control" style="margin-top: 20px">
                             <ul class="tabs">
-                                <li class="active"><a href="#fluxo">${["tab.fluxo"]}</a></li>
-                                <li><a href="#tarefaFacil" id="tab_tarefaFacil">${["tab.tarefa"]}</a></li>
-                                <li><a href="#especialista">${["tab.mentor"]}</a></li>
+                                <li class="active"><a href="#fluxo">${t["tab.fluxo"]}</a></li>
+                                <li><a href="#tarefaFacil" id="tab_tarefaFacil">${t["tab.tarefa"]}</a></li>
+                                <li><a href="#especialista">${t["tab.mentor"]}</a></li>
                             </ul>
                             <div class="frames">
                                 <!-- fluxo de contribuição -->
                                 <div class="frame" id="fluxo">
                                     <fieldset>
-                                        <legend class="fg-darkBlue">${["fluxo.titulo"]}<span class="fg-green rating_nota place-right"></span></legend>
+                                        <legend class="fg-darkBlue">${t["fluxo.titulo"]}<span class="fg-green rating_nota place-right"></span></legend>
                                         <p>${projeto.comoIniciar.fluxo.texto}</p>
                                         <div class="grid fluid text-left ">
                                             <div class="row">
                                                 <div class="span2 offset0">
-                                                    <a href="#" onclick="ativaAba('#tab2')" style="width: 100%;height: 20px;padding-bottom: 5px">${["fluxo.habilidades"]}</a>
+                                                    <a href="#" onclick="ativaAba('#tab2')" style="width: 100%;height: 20px;padding-bottom: 5px">${t["fluxo.habilidades"]}</a>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="span3 offset1">
-                                                    <a href="#" onclick="ativaAba('#tab5')" style="width: 100%;height: 20px;padding-bottom: 5px">${["fluxo.workspace"]}</a>
+                                                    <a href="#" onclick="ativaAba('#tab5')" style="width: 100%;height: 20px;padding-bottom: 5px">${t["fluxo.workspace"]}</a>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="span4 offset2">
-                                                    <a href="#" onclick="ativaAba('#tab6')" style="width: 100%;height: 100%;padding: 5px">${["fluxo.codigo"]}</a>
+                                                    <a href="#" onclick="ativaAba('#tab6')" style="width: 100%;height: 100%;padding: 5px">${t["fluxo.codigo"]}</a>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="span5 offset3">
-                                                    <a href="#" onclick="ativaAba('#tab2')" style="width: 100%;height: 100%;padding: 5px">${["fluxo.requisito"]}</a>
+                                                    <a href="#" onclick="ativaAba('#tab2')" style="width: 100%;height: 100%;padding: 5px">${t["fluxo.requisito"]}</a>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="span6 offset4 ">
-                                                    <a href="#" onclick="ativaAba('#tab_tarefaFacil')" style="width: 100%;height: 100%;padding: 5px">${["fluxo.tarefa"]}</a>
+                                                    <a href="#" onclick="ativaAba('#tab_tarefaFacil')" style="width: 100%;height: 100%;padding: 5px">${t["fluxo.tarefa"]}</a>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="span7 offset5">
-                                                    <a href="#" onclick="ativaAba('#tab7')" style="width: 100%;height: 100%;padding: 5px">${["fluxo.contribuicao"]}</a>
+                                                    <a href="#" onclick="ativaAba('#tab7')" style="width: 100%;height: 100%;padding: 5px">${t["fluxo.contribuicao"]}</a>
                                                 </div>
                                             </div>
                                             <div class="row text-center">
                                                 <div class="span12">
-                                                    <a href="#" onclick="ativaAba('#tab4')" class="tile bg-lightGreen fg-white" style="width: 100%;height: 100%;padding: 5px">${["fluxo.suporte"]}</a>
+                                                    <a href="#" onclick="ativaAba('#tab4')" class="tile bg-lightGreen fg-white" style="width: 100%;height: 100%;padding: 5px">${t["fluxo.suporte"]}</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -246,7 +246,7 @@
                                 <!-- Encontrar tarefa fácil -->
                                 <div class="frame" id="tarefaFacil">
                                     <fieldset>
-                                        <legend class="fg-darkBlue">${["tarefa.titulo"]}<span class="fg-green rating_nota place-right"></span></legend>
+                                        <legend class="fg-darkBlue">${t["tarefa.titulo"]}<span class="fg-green rating_nota place-right"></span></legend>
                                         <div class="row">
                                             <p>${projeto.comoIniciar.tarefaFacil.texto}</p>
                                         </div>
@@ -365,7 +365,7 @@
                                 <!-- Encontrar especialista -->    
                                 <div class="frame" id="especialista">
                                     <fieldset>
-                                        <legend class="fg-darkBlue">${["mentor.titulo"]}<span class="fg-green rating_nota place-right"></span></legend>
+                                        <legend class="fg-darkBlue">${t["mentor.titulo"]}<span class="fg-green rating_nota place-right"></span></legend>
                                         <p>${projeto.comoIniciar.mentor.texto}</p>
                                         <p>
                                             Here you can find a list of mentors engaged to help newcomers to Amarok: Mentors of Amarok by OpenHatch
@@ -427,21 +427,21 @@
                     <div class="frame" id="tab_5">
                         <div class="tab-control" data-role="tab-control">
                             <ul class="tabs">
-                                <li class="active"><a href="#pesquiseAntes">${["tab.pesquisa"]}</a> </li>
-                                <li><a href="#batePapo">${["tab.irc"]}</a></li>
-                                <li><a href="#listaDiscussao">${["tab.lista.discussao"]}</a></li>
+                                <li class="active"><a href="#pesquiseAntes">${t["tab.pesquisa"]}</a> </li>
+                                <li><a href="#batePapo">${t["tab.irc"]}</a></li>
+                                <li><a href="#listaDiscussao">${t["tab.lista.discussao"]}</a></li>
                             </ul>
                             <div class="frames">
                                 <!--pesquise antes -->
                                 <div class="frame" id="pesquiseAntes">
                                     <fieldset>
-                                        <legend class="fg-darkBlue">${["tab.pesquisa.titulo1"]}<span class="fg-green rating_nota place-right"></span></legend>
+                                        <legend class="fg-darkBlue">${t["tab.pesquisa.titulo1"]}<span class="fg-green rating_nota place-right"></span></legend>
                                     </fieldset>
                                     <div class="grid fluid">
                                         <div class="row">
                                             <div class="span6">
                                                 <fieldset>
-                                                    <legend class="fg-darkBlue">${["tab.pesquisa.titulo2"]}</legend>
+                                                    <legend class="fg-darkBlue">${t["tab.pesquisa.titulo2"]}</legend>
                                                     <p>Tente procurar nos arquivos das listas de discussão e wiki antes de 
                                                         fazer sua pergunta. É uma boa prática tentar, vc mesmo, encontrar uma solução.</p>
                                                     <!-- SiteSearch Google -->
@@ -458,7 +458,7 @@
 
                                             <div class="span6">
                                                 <fieldset>
-                                                    <legend class="fg-darkBlue">${["tab.pesquisa.titulo3"]}</legend>
+                                                    <legend class="fg-darkBlue">${t["tab.pesquisa.titulo3"]}</legend>
                                                     <p>
                                                         Veja outros documentos disponibilizados pelo projeto:
                                                     </p>
@@ -512,7 +512,7 @@
                                 <!-- Canal de comunicação IRC -->
                                 <div class="frame" id="batePapo">
                                     <fieldset>
-                                        <legend class="fg-darkBlue">${["tab.irc.titulo1"]}<span class="fg-green rating_nota place-right"></span></legend>
+                                        <legend class="fg-darkBlue">${t["tab.irc.titulo1"]}<span class="fg-green rating_nota place-right"></span></legend>
                                         <p>${projeto.comunicacao.irc.texto}</p>
                                         <div class="fg-red">
                                             <iframe src="${projeto.comunicacao.irc.url}" style="border: none;width:100%;height: 500px"></iframe>
@@ -560,17 +560,17 @@
                                 <!-- Lista de discussão -->
                                 <div class="frame" id="listaDiscussao">
                                     <fieldset>
-                                        <legend class="fg-darkBlue">${["tab.lista.titulo1"]}<span class="fg-green rating_nota place-right"></span></legend>
+                                        <legend class="fg-darkBlue">${t["tab.lista.titulo1"]}<span class="fg-green rating_nota place-right"></span></legend>
                                         <p>Link: <a href="<c:out value="{projeto.comunicacao.lista.link}"/>" target="_blank">{projeto.comunicacao.lista.link}</a></p>
                                     </fieldset>
                                     <fieldset>
-                                        <legend class="fg-darkBlue">${["tab.lista.titulo2"]}</legend>
+                                        <legend class="fg-darkBlue">${t["tab.lista.titulo2"]}</legend>
                                         <p>
                                             ${projeto.comunicacao.lista.subscricao}
                                         </p>
                                     </fieldset>
                                     <fieldset>
-                                        <legend class="fg-darkBlue">${["tab.lista.titulo3"]}</legend>
+                                        <legend class="fg-darkBlue">${t["tab.lista.titulo3"]}</legend>
                                         <p>
                                             ${projeto.comunicacao.lista.informacao}
                                         </p>
@@ -624,19 +624,19 @@
                     -->
                     <div class="frame" id="tab_4">
                         <fieldset>
-                            <legend class="fg-darkBlue">${["tab.workspace.titulo1"]}<span class="fg-green rating_nota place-right"></span></legend>
+                            <legend class="fg-darkBlue">${t["tab.workspace.titulo1"]}<span class="fg-green rating_nota place-right"></span></legend>
                         </fieldset>
                         <div class="grid fluid">
                             <div class="row ">
                                 <div class="span6">
                                     <fieldset>
-                                        <legend class="fg-darkBlue">${["tab.workspace.titulo2"]}</legend>
+                                        <legend class="fg-darkBlue">${t["tab.workspace.titulo2"]}</legend>
                                     </fieldset>
                                     ${projeto.configurarWorkspace.texto}
                                 </div>
                                 <div class="span6">
                                     <fieldset>
-                                        <legend class="fg-darkBlue">${["tab.workspace.titulo3"]}</legend>
+                                        <legend class="fg-darkBlue">${t["tab.workspace.titulo3"]}</legend>
                                         <p>Perguntar se o projeto possui endereço do histórico de arquivos da lista de email </p>
                                         <!-- SiteSearch Google -->
                                         <p>Buscar uma solução no Google.</p>
@@ -696,19 +696,19 @@
                     -->
                     <div class="frame" id="tab_6">
                         <fieldset>
-                            <legend class="fg-darkBlue">${["tab.entender.titulo1"]}<span class="fg-green rating_nota place-right"></span></legend>
+                            <legend class="fg-darkBlue">${t["tab.entender.titulo1"]}<span class="fg-green rating_nota place-right"></span></legend>
                         </fieldset>
                         <div class="grid fluid">
                             <div class="row">
                                 <div class="span6">
                                     <fieldset>
-                                        <legend class="fg-darkBlue">${["tab.entender.titulo2"]}</legend>
+                                        <legend class="fg-darkBlue">${t["tab.entender.titulo2"]}</legend>
                                         ${projeto.entendendoCodigo.documentacao}
                                     </fieldset>
                                 </div>
                                 <div class="span6">
                                     <fieldset>
-                                        <legend class="fg-darkBlue">${["tab.entender.titulo3"]}</legend>
+                                        <legend class="fg-darkBlue">${t["tab.entender.titulo3"]}</legend>
                                     </fieldset>
                                 </div>
                             </div>
@@ -759,7 +759,7 @@
                     -->
                     <div class='frame' id='tab_7'>
                         <fieldset>
-                            <legend class="fg-darkBlue">${["tab.contribuicao.titulo1"]}<span class="fg-green rating_nota place-right"></span></legend>
+                            <legend class="fg-darkBlue">${t["tab.contribuicao.titulo1"]}<span class="fg-green rating_nota place-right"></span></legend>
                                 ${projeto.submeterMudanca.texto}
                         </fieldset>
                         <!-- Área de Comentários -->

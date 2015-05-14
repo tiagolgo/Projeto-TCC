@@ -3,6 +3,7 @@ br\com\utfpr\ajudanovatos\projeto\infos\Linguagem_.class
 br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Feed_.class
 br\com\utfpr\ajudanovatos\controller\LoginController.class
 br\com\utfpr\ajudanovatos\entidade\usuario\UsuarioLogado.class
+br\com\utfpr\ajudanovatos\controller\Upload_File.class
 Dao\especificos\DaoProjeto.class
 br\com\utfpr\ajudanovatos\controller\IndexController.class
 br\com\utfpr\ajudanovatos\controller\ComentarioController.class
