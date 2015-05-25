@@ -5,10 +5,13 @@
  */
 package Dados_Globais;
 
-import br.com.utfpr.ajudanovatos.projeto.Projeto;
+import br.com.utfpr.ajudanovatos.projeto.beans.LinguagemBean;
 import br.com.utfpr.ajudanovatos.projeto.beans.ProjetoBean;
+import br.com.utfpr.ajudanovatos.projeto.infos.Linguagem;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 
@@ -21,86 +24,122 @@ import javax.inject.Named;
 public class Dados {
 
     private boolean atualizado = false;
-    private final List linguagens = new ArrayList<>();
-    private List<ProjetoBean> projetos = new ArrayList();
-    private List<ProjetoBean> projetosRecentes = new ArrayList();
+    private List<LinguagemBean> linguagens = new ArrayList<>();
+    private List<ProjetoBean> projetosAntigo = new ArrayList();
+    private List<ProjetoBean> projetosRecente = new ArrayList();
     private int totalProjetos;
+    private final HashMap<String, Integer> totais = new HashMap<>();
 
-    public List getLinguagens() {
-        return linguagens;
-    }
-
-    public void setLinguagens(List novasLinguagens) {
-        List l1 = novasLinguagens;
-        System.out.println("tamanho antes: " + l1.size());
-        for (Object obj1 : novasLinguagens) {
-            Object[] aux1 = (Object[]) obj1;
-            for (Object obj2 : this.linguagens) {
-                Object[] aux2 = (Object[]) obj2;
-                if (aux1[1].equals(aux2[1])) {
-                    l1.remove(obj1);
-                }
-            }
-        }
-
-        for (Object l2 : l1) {
-            this.linguagens.add(l2);
-        }
-        System.out.println("tamanho depois: " + l1.size());
-    }
-
-    public List<ProjetoBean> getProjetos() {
-        return projetos;
-    }
-
-    public void setProjeto(Projeto nomeProjeto) {
-        //adicionar projeto caso nao exista na lista
-        ProjetoBean projeto = new ProjetoBean();
-        projeto.setNome(nomeProjeto.getNome());
-        if (this.projetos.size() == 10) {
-            this.projetos.remove(9);
-        }
-        this.projetos.add(projeto);
-        this.setProjetoRecente(projeto);
-        this.incrementaTotalProjetos();
-    }
-
-    public void setProjetos(List<ProjetoBean> projetos) {
-        this.projetos = projetos;
-    }
-
-    public int getTotalProjetos() {
-        return totalProjetos;
-    }
-
-    private void incrementaTotalProjetos() {
-        this.totalProjetos = this.totalProjetos + 1;
-    }
-
-    public List<ProjetoBean> getProjetosRecentes() {
-        return projetosRecentes;
-    }
-
-    public void setProjetoRecente(ProjetoBean projetoRecente) {
-        if (this.projetosRecentes.size() == 10) {
-            this.projetos.remove(9);
-        }
-        this.projetosRecentes.add(0, projetoRecente);
-    }
-
-    public void setAtualizado(boolean atualizado) {
-        this.atualizado = atualizado;
-    }
-
-    public boolean isAtualizado() {
+    public boolean isAtualizado(){
         return atualizado;
     }
 
-    public void setProjetosRecentes(List<ProjetoBean> projetosRecentes) {
-        this.projetosRecentes = projetosRecentes;
+    public void setAtualizado(boolean atualizado){
+        this.atualizado = atualizado;
     }
 
-    public void setTotalProjetos(int totalProjetos) {
-        this.totalProjetos = totalProjetos;
+    public List<ProjetoBean> getProjetosAntigo(){
+        return projetosAntigo;
     }
+
+    public void setProjetosAntigo(List<ProjetoBean> projetosAntigo){
+        this.projetosAntigo = projetosAntigo;
+    }
+
+    public List<ProjetoBean> getProjetosRecente(){
+        return projetosRecente;
+    }
+
+    public void setProjetosRecente(List<ProjetoBean> projetosRecente){
+        this.projetosRecente = projetosRecente;
+    }
+
+    public int getTotalProjetos(){
+        return totalProjetos;
+    }
+
+    public void setProjetoRecente(ProjetoBean projeto){
+        boolean existe = false;
+        for (ProjetoBean p : this.projetosRecente) {
+            if (p.getNome().equals(projeto.getNome())) {
+                existe = true;
+                break;
+            }
+        }
+        if (!existe&&this.projetosRecente.size()<10) {
+            this.projetosRecente.remove(9);
+            this.projetosRecente.add(0, projeto);
+        }
+
+        this.totalProjetos = totalProjetos+1;
+    }
+
+    public void setProjetoAntigo(ProjetoBean projeto){
+        boolean existe = false;
+        for (ProjetoBean p : this.projetosAntigo) {
+            if (p.getNome().equals(projeto.getNome())) {
+                this.projetosAntigo.add(projeto);
+                p.setId(projeto.getId());
+                p.setLogotipo(projeto.getLogotipo());
+                p.setNome(projeto.getNome());
+                existe = true;
+                break;
+            }
+        }
+
+        if (!existe&&this.projetosAntigo.size()<10) {
+            this.projetosAntigo.add(projeto);
+        }
+    }
+
+    public void updateLogoProjeto(String projeto, String logo){
+        for (ProjetoBean p : this.projetosRecente) {
+            if (!p.getNome().equals(projeto)) {
+                p.setLogotipo(logo);
+                break;
+            }
+        }
+    }
+
+    public List getLinguagens(){
+        return linguagens;
+    }
+
+    public void setLinguagens(List<Linguagem> langs){
+        for (Linguagem lang : langs) {
+            if (!totais.containsKey(lang.getTexto())) {//nao contem
+                totais.put(lang.getTexto(), 1);
+            } else {//ja contem
+                int t = totais.get(lang.getTexto())+1;
+                totais.put(lang.getTexto(), t);
+            }
+        }
+        this.linguagens.clear();
+        for (Map.Entry<String, Integer> entrySet : totais.entrySet()) {
+            LinguagemBean lb=new LinguagemBean();
+            lb.setTexto(entrySet.getKey());
+            lb.setQuantidade(entrySet.getValue());
+            this.linguagens.add(lb);
+        }
+    }
+
+    public HashMap<String, Integer> getTotais(){
+        return totais;
+    }
+    
+    public void updateLogo(String projeto, String logo){
+        for (ProjetoBean p: this.projetosAntigo) {
+            if(p.getNome().equals(projeto)){
+                p.setLogotipo(logo);
+                break;
+            }
+        }
+        for(ProjetoBean p:this.projetosRecente){
+            if(p.getNome().equals(projeto)){
+                p.setLogotipo(logo);
+                break;
+            }
+        }
+    }
+    
 }

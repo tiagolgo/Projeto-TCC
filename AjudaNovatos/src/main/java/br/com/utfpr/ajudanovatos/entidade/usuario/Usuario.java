@@ -24,7 +24,6 @@ public class Usuario implements Serializable {
     private Long id;
     private String nome;
     private String email;
-    private String login;
     @OneToOne(cascade = CascadeType.ALL)
     private Senha password;
 
@@ -53,14 +52,6 @@ public class Usuario implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
     }
 
     public Senha getPassword() {

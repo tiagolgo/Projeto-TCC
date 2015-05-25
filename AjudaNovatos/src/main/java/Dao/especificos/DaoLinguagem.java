@@ -6,16 +6,12 @@
 package Dao.especificos;
 
 import Dao.Dao_Basic;
-import br.com.utfpr.ajudanovatos.projeto.beans.LinguagemBean;
 import br.com.utfpr.ajudanovatos.projeto.infos.Linguagem;
 import java.util.List;
 import javax.inject.Inject;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.criterion.ProjectionList;
-import org.hibernate.criterion.Projections;
-import org.hibernate.transform.Transformers;
 
 /**
  *
@@ -29,7 +25,7 @@ public class DaoLinguagem extends Dao_Basic<Linguagem> {
         classe = Linguagem.class;
     }
 
-    public List getLinguagens() {
+    public List listLinguagens() {
         try {
             Criteria c = session.createCriteria(classe);
             /*ProjectionList prolist = Projections.projectionList();
@@ -43,7 +39,6 @@ public class DaoLinguagem extends Dao_Basic<Linguagem> {
             System.out.println("Uma excecao ocorreu");
             System.out.println("Causa: "+e.getCause());
             System.out.println("Message: "+e.getMessage());
-            e.printStackTrace();
         }
         return null;
     }

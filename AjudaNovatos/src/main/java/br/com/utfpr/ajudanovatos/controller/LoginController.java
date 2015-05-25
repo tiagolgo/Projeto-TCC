@@ -14,6 +14,7 @@ import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
 import br.com.utfpr.ajudanovatos.entidade.usuario.Usuario;
 import br.com.utfpr.ajudanovatos.entidade.usuario.UsuarioLogado;
+import br.com.utfpr.ajudanovatos.utils.EncriptacaoPassword;
 import javax.inject.Inject;
 
 /**
@@ -31,12 +32,14 @@ public class LoginController {
     private DaoUsuario du;
     @Inject
     private UsuarioLogado ul;
+    @Inject
+    private EncriptacaoPassword encript;
 
     @Post("/login")
     public void login(String login, String senha) {
         this.validator.addIf(login == null || senha == null, new SimpleMessage("login", "Login ou Senha invalidos"));
         this.validator.onErrorForwardTo(UsuarioController.class).login();
-        Usuario user = du.getUserAutenticado(login, senha);
+        Usuario user = du.usuarioAutenticado(login, this.encript.encripta(senha));
         this.validator.addIf(user == null, new SimpleMessage("user-login", "Usuário não encontrado"));
         this.validator.onErrorForwardTo(UsuarioController.class).login();
         if (user != null) {

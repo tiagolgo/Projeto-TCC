@@ -10,8 +10,6 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.Validator;
-import br.com.utfpr.ajudanovatos.projeto.comentario.Comentario;
-import br.com.utfpr.ajudanovatos.projeto.opcoes.Submeter_Mudanca;
 import javax.inject.Inject;
 
 /**
@@ -31,7 +29,7 @@ public class ComentarioController {
     @Get("/adicionarComentario")
     public void adicionaComentario(Long id_alvo, String alvo, String comentario_autor, String comentario_texto, String comentario_data, int nota) {
         // ALVOS -> tarefa, pesquisa, lista, fluxo, mentor, chat, mudanca, requisito, codigo, workspace      
-        if (this.dao.saveComentario(id_alvo, alvo, comentario_autor, comentario_texto, comentario_data, nota)) {
+        if (this.dao.salvar(id_alvo, alvo, comentario_autor, comentario_texto, comentario_data, nota)) {
             this.result.nothing();
         } else {
             this.result.notFound();

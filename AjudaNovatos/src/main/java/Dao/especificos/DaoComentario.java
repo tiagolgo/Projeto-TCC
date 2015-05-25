@@ -23,7 +23,7 @@ public class DaoComentario extends Dao_Basic<Comentario> {
         classe = Comentario.class;
     }
 
-    public boolean saveComentario(Long id, String alvo, String autor, String texto, String data, int nota) {
+    public boolean salvar(Long id, String alvo, String autor, String texto, String data, int nota) {
         StringBuilder sb = new StringBuilder();
         sb.append("insert into comentario (autor, dataComentario, texto, nota,").append(alvo).append(") values ('").append(autor).append("','").append(data).append("','").append(texto).append("',").append(nota).append(",").append(id).append(")");
         String sql = sb.toString();
@@ -34,7 +34,6 @@ public class DaoComentario extends Dao_Basic<Comentario> {
             session.beginTransaction().commit();
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
             return false;
         }
     }

@@ -5,6 +5,8 @@
  */
 package br.com.utfpr.ajudanovatos.controller;
 
+import br.com.utfpr.ajudanovatos.utils.SendMailController;
+import br.com.utfpr.ajudanovatos.utils.UploadImagem;
 import Dados_Globais.Dados;
 import Dao.especificos.DaoProjeto;
 import br.com.caelum.vraptor.Controller;
@@ -12,8 +14,7 @@ import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
-import br.com.caelum.vraptor.observer.upload.UploadedFile;
-import br.com.caelum.vraptor.validator.SimpleMessage;
+import br.com.caelum.vraptor.validator.I18nMessage;
 import br.com.caelum.vraptor.validator.Validator;
 import static br.com.caelum.vraptor.view.Results.json;
 import br.com.utfpr.ajudanovatos.projeto.Projeto;
@@ -22,14 +23,6 @@ import java.time.LocalDate;
 import java.util.List;
 import javax.inject.Inject;
 import org.hibernate.HibernateException;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.ServletContext;
-import org.apache.commons.io.IOUtils;
 
 /**
  *
@@ -49,49 +42,53 @@ public class ProjetoController {
     @Inject
     private Dados dados;
     @Inject
-    Upload_File upload;
+    UploadImagem upload;
+    @Inject
+    SendMailController sendMail;
 
     @Get(value = {"pt/novo/projeto", "en/new/project"})
-    public void formulario() {
-        this.validator.addIf(!this.usuario.isLogado(), new SimpleMessage("login", "login.necessario"));
+    public void formulario(){
+        this.validator.addIf(!this.usuario.isLogado(), new I18nMessage("login", "login.necessario"));
         this.validator.onErrorForwardTo(UsuarioController.class).login();
     }
 
-    @Get(value = {"pt/projeto/{id}", "en/project/{id}"})
-    public void projeto(Long id) {
+    @Get(value = {"pt/projeto", "en/project"})
+    public void projeto(Long id){
         Projeto p = this.dao.getPorId(id);
         this.result.include("projeto", p);
     }
 
     @Post(value = {"pt/salvar/projeto", "en/save/project"})
-    public void salvar(Projeto projeto, UploadedFile logo) {
-        projeto.setDataCriacao(LocalDate.now().toString());
-        projeto.setUsuario(this.usuario.getId());
+    public void salvar(Projeto projeto){
+        String nomeProjeto = projeto.getNome();
 
-        try {
-            dao.persiste(projeto);
-            if (projeto.getId() == null) {
-                this.dados.setProjeto(projeto);
-                this.dados.setLinguagens(projeto.getLinguagens());
-            }
-        } catch (HibernateException e) {
-            System.err.println("Erro ao tentar salvar projeto........");
-            e.printStackTrace();
+        if (projeto.getId()==null) {
+            this.validator.addIf(this.dao.seProjetoExiste(projeto.getNome()), new I18nMessage("error", "projeto.existente"));
+            this.validator.onErrorForwardTo(this).formulario();
+            String data = LocalDate.now().toString();
+            projeto.setDataCriacao(data);
         }
-        this.result.of(this).formulario();
+        try {
+            projeto.setUsuario(this.usuario.getId());
+            this.dao.persiste(projeto);
+            this.result.include("nomeprojeto", nomeProjeto);
+            this.result.redirectTo(this).uploadImagem();
+        } catch (HibernateException e) {
+            this.result.redirectTo(this).formulario();
+        }
     }
 
-    @Get(value = {"pt/editar/projeto/{id}", "en/edit/project/{id}"})
-    public void alterar(Long id) {
+    @Get(value = {"pt/editar/projeto", "en/edit/project"})
+    public void alterar(Long id){
         Projeto p = this.dao.getPorId(id);
         this.result.include("projeto", p);
         this.result.of(this).formulario();
     }
 
     @Delete(value = {"pt/remove/projeto", "en/remove/project"})
-    public void remover(Long projeto) {
+    public void remover(Long id){
         try {
-            this.dao.deletar(projeto);
+            this.dao.deletePorId("projeto", id);
             this.result.include("msg", "Projeto removido com sucesso!");
         } catch (Exception e) {
             this.result.include("msg", "Erro ao tentar remover projeto");
@@ -99,82 +96,41 @@ public class ProjetoController {
         this.result.forwardTo(UsuarioController.class).meusProjetos();
     }
 
-    @Get(value = {"pt/projetos", "en/projects"})
-    public void projetos() {
-    }
-
-    @Get(value = {"pt/projetos/todos", "en/projects/all"})
-    public void projetosTodos() {
+    @Get(value = {"pt/projetos/lista", "en/projects/list"})
+    public void projetos(){
         List<Projeto> lista = this.dao.lista();
         this.result.include("projetos", lista);
-        this.result.of(this).projetos();
     }
 
-    @Get(value = {"pt/projeto/linguagem/{linguagem}", "en/project/language/{linguagem}"})
-    public void getProjetosLinguagem(String linguagem) {
-        List lista = this.dao.getProjetoLinguagem(linguagem);
+    @Get(value = {"/pt/lista/projetos/linguagem", "en/list/projects/language"})
+    public void listProjetosLinguagem(String q){
+        List lista = this.dao.getProjetoLinguagem(q);
         this.result.include("projetos", lista);
         this.result.forwardTo(this).projetos();
     }
 
-    @Get(value = {"pt/projetos/nome", "en/projects/name"})
-    public void getProjetosNome(String busca) {
-        List list = this.dao.pesquisarTrecho(busca);
-        this.result.include("projetos", list);
-        this.result.forwardTo(this).projetos();
+    @Get(value = {"pt/projeto/nome", "en/project/name"})
+    public void projetoPorNome(String projeto){
+        Projeto proj = this.dao.buscaPorNome(projeto);
+        this.result.include("projeto", proj);
     }
 
     @Get("/paginacao.json")
-    public void paginacao() {
-        List list = this.dao.getPaginacao(1, 10);
+    public void paginacao(){
+        List list = this.dao.getPaginacao(1, 10, false);
         this.result.use(json()).from(list).serialize();
     }
 
-    public void uploadLogo(Projeto id, UploadedFile logo) {
-
-    }
-
     @Get("/projetos.json")
-    public void getJson(String trecho) {
-        if (trecho != null) {
+    public void listProjetosJson(String trecho){
+        if (trecho!=null) {
             List list = this.dao.pesquisarTrechoJson(trecho);
             this.result.use(json()).from(list).serialize();
         }
     }
 
-    @Get("/removeLinguagem")
-    public void removeLinguagem(Long id) {
-        if (this.dao.removeLinguagem(id)) {
-            this.result.nothing();
-        } else {
-            this.result.notFound();
-        }
-    }
-
-    @Get("/removePlataforma")
-    public void removePlataforma(Long id) {
-        if (this.dao.removePlataforma(id)) {
-            this.result.nothing();
-        } else {
-            this.result.notFound();
-        }
-    }
-
-    @Get("/removeFeed")
-    public void removeFeed(Long id) {
-        if (this.dao.removeFeed(id)) {
-            this.result.nothing();
-        } else {
-            this.result.notFound();
-        }
-    }
-
-    @Post("/uploadImagem")
-    public void salvaImagem(UploadedFile imagem) {
-      this.upload.salva(imagem);
-    }
-
     @Get("/upload/form")
-    public void uploadImagem() {
+    public void uploadImagem(){
     }
+
 }

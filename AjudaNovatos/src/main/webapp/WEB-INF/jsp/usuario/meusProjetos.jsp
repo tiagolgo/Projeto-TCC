@@ -18,9 +18,11 @@
         <c:import url="../componentes/header.jsp" />
         <div class="container">
             <c:import url="../componentes/internacionalizacao.jsp"/>
-            <div class="span10 offset2">
-                <fieldset style="margin-top: 10%">
-                    <legend class="fg-blue">Meus Projetos</legend>
+            <div class="panel" style="margin-top: 50px">
+                <div class="panel-header">
+                    <h2 class="text-bold">Meus Projetos</h2>
+                </div>
+                <div class="panel-content">        
                     <c:choose>
                         <c:when test="${projetosUser.size()==0}">
                             <p style="font-size: 20px">${t["sem.projeto"]}</p>
@@ -29,31 +31,42 @@
                             </p>
                         </c:when>
                         <c:otherwise>
-                            <c:forEach var="projeto" items="${projetosUser}">
-                                <div class="row border margin5 padding5 text-left">
-                                    <h4>${projeto.nome}</h4>
-                                    <p>Criacao: ${projeto.dataCriacao}</p>
-                                    <a class="button small" href="<c:url value="${['url.editar.projeto.id']}/${projeto.id}"/>"> Editar</a>
-                                    <input class="button small" type="button" value="Remover" onclick="removerProjeto(${projeto.id});"/>
-                                    <form id="projeto_${projeto.id}" action="<c:url value="${['url.remove.projeto']}"/>" method="post">
-                                        <input type="hidden" name="projeto"  value="${projeto.id}"/>
-                                        <input type="hidden" name="_method" value="DELETE"/>
-                                    </form>
-                                </div>
-                            </c:forEach>
+                            <div class="grid">
+                                <c:forEach var="projeto" items="${projetosUser}">
+                                    <div class="row border-bottom">
+                                        <div class="span2">
+                                            <div class="tile border">
+                                                <div class="tile-content icon">
+                                                    <img src="<c:url value="/images/logo/"/>${projeto.logotipo}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="span6 place-right">
+                                            <h4>${projeto.nome}</h4>
+                                            <p>Criacao: ${projeto.dataCriacao}</p>
+                                            <a class="button small bg-orange fg-white" href="<c:url value="${t['url.editar.projeto.id']}?id=${projeto.id}"/>"> Editar</a>
+                                            <input class="button small bg-red fg-white" type="button" value="Remover" onclick="removerProjeto(${projeto.id});"/>
+                                            <form id="projeto_${projeto.id}" action="<c:url value="${t['url.remove.projeto']}"/>" method="post">
+                                                <input type="hidden" name="projeto"  value="${projeto.id}"/>
+                                                <input type="hidden" name="_method" value="DELETE"/>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                            </div>
                         </c:otherwise>
                     </c:choose>
-                    <script>
-                        function removerProjeto(id) {
-                            var c = confirm("Deseja realmente remover o projeto?");
-                            if (c) {
-                                $("#projeto_" + id).submit();
-                            }
-                            return false;
-                        }
-                    </script>
-                </fieldset>
+                </div>
             </div>
+            <script>
+                function removerProjeto(id) {
+                    var c = confirm("Deseja realmente remover o projeto?");
+                    if (c) {
+                        $("#projeto_" + id).submit();
+                    }
+                    return false;
+                }
+            </script>
         </div>
     </body>
 </html>

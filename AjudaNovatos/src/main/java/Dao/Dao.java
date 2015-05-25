@@ -5,6 +5,7 @@
  */
 package Dao;
 
+import java.io.Serializable;
 import java.util.List;
 import org.hibernate.HibernateException;
 
@@ -13,9 +14,16 @@ import org.hibernate.HibernateException;
  * @param <T>
  */
 public interface Dao<T> {
-    public void persiste(T o) throws HibernateException;
+
     public T getPorId(Long id) throws HibernateException;
-    public boolean deletePorId(Long id) throws HibernateException;
+
+    public boolean deletePorId(String classe, Long id) throws HibernateException;
+
     public boolean delete(T o) throws HibernateException;
+
     public List<T> lista() throws HibernateException;
+
+    public void persiste(T o) throws HibernateException;
+
+    public void update(T o) throws HibernateException;
 }

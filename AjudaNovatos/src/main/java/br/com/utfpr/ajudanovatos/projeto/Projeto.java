@@ -70,171 +70,171 @@ public class Projeto implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     private Submeter_Mudanca submeterMudanca;
 
-    public Long getId() {
+    public Long getId(){
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Long id){
         this.id = id;
     }
 
-    public String getDescricao() {
+    public String getDescricao(){
         return descricao;
     }
 
-    public void setDescricao(String descricao) {
+    public void setDescricao(String descricao){
         this.descricao = descricao;
     }
 
-    public String getNome() {
+    public String getNome(){
         return nome;
     }
 
-    public void setNome(String nome) {
+    public void setNome(String nome){
         this.nome = nome;
     }
 
-    public String getSite() {
+    public String getSite(){
         return site;
     }
 
-    public void setSite(String site) {
+    public void setSite(String site){
         this.site = site;
     }
 
-    public String getCodFonte() {
+    public String getCodFonte(){
         return codFonte;
     }
 
-    public void setCodFonte(String codFonte) {
+    public void setCodFonte(String codFonte){
         this.codFonte = codFonte;
     }
 
-    public String getGestorBug() {
+    public String getGestorBug(){
         return gestorBug;
     }
 
-    public void setGestorBug(String gestorBug) {
+    public void setGestorBug(String gestorBug){
         this.gestorBug = gestorBug;
     }
 
-    public String getDataCriacao() {
+    public String getDataCriacao(){
         return dataCriacao;
     }
 
-    public void setDataCriacao(String dataCriacao) {
+    public void setDataCriacao(String dataCriacao){
         this.dataCriacao = dataCriacao;
     }
 
-    public String getListaDiscussao() {
+    public String getListaDiscussao(){
         return listaDiscussao;
     }
 
-    public void setListaDiscussao(String listaDiscussao) {
+    public void setListaDiscussao(String listaDiscussao){
         this.listaDiscussao = listaDiscussao;
     }
 
-    public String getOpenHub() {
+    public String getOpenHub(){
         return openHub;
     }
 
-    public void setOpenHub(String openHub) {
+    public void setOpenHub(String openHub){
         this.openHub = openHub;
     }
 
-    public String getWiki() {
+    public String getWiki(){
         return wiki;
     }
 
-    public void setWiki(String wiki) {
+    public void setWiki(String wiki){
         this.wiki = wiki;
     }
 
-    public String getLogotipo() {
+    public String getLogotipo(){
         return logotipo;
     }
 
-    public void setLogotipo(String logotipo) {
+    public void setLogotipo(String logotipo){
         this.logotipo = logotipo;
     }
 
-    public Long getUsuario() {
+    public Long getUsuario(){
         return usuario;
     }
 
-    public void setUsuario(Long usuario) {
+    public void setUsuario(Long usuario){
         this.usuario = usuario;
     }
 
-    public List<Linguagem> getLinguagens() {
+    public List<Linguagem> getLinguagens(){
         return linguagens;
     }
 
-    public void setLinguagens(List<Linguagem> linguagens) {
+    public void setLinguagens(List<Linguagem> linguagens){
         this.linguagens = linguagens;
     }
 
-    public List<Plataforma> getPlataformas() {
+    public List<Plataforma> getPlataformas(){
         return plataformas;
     }
 
-    public void setPlataformas(List<Plataforma> plataformas) {
+    public void setPlataformas(List<Plataforma> plataformas){
         this.plataformas = plataformas;
     }
 
-    public Repositorio getRepositorio() {
+    public Repositorio getRepositorio(){
         return repositorio;
     }
 
-    public void setRepositorio(Repositorio repositorio) {
+    public void setRepositorio(Repositorio repositorio){
         this.repositorio = repositorio;
     }
 
-    public Como_Iniciar getComoIniciar() {
+    public Como_Iniciar getComoIniciar(){
         return comoIniciar;
     }
 
-    public void setComoIniciar(Como_Iniciar comoIniciar) {
+    public void setComoIniciar(Como_Iniciar comoIniciar){
         this.comoIniciar = comoIniciar;
     }
 
-    public Comunicacao getComunicacao() {
+    public Comunicacao getComunicacao(){
         return comunicacao;
     }
 
-    public void setComunicacao(Comunicacao comunicacao) {
+    public void setComunicacao(Comunicacao comunicacao){
         this.comunicacao = comunicacao;
     }
 
-    public Configurar_Workspace getConfigurarWorkspace() {
+    public Configurar_Workspace getConfigurarWorkspace(){
         return configurarWorkspace;
     }
 
-    public void setConfigurarWorkspace(Configurar_Workspace configurarWorkspace) {
+    public void setConfigurarWorkspace(Configurar_Workspace configurarWorkspace){
         this.configurarWorkspace = configurarWorkspace;
     }
 
-    public Entendendo_Codigo getEntendendoCodigo() {
+    public Entendendo_Codigo getEntendendoCodigo(){
         return entendendoCodigo;
     }
 
-    public void setEntendendoCodigo(Entendendo_Codigo entendendoCodigo) {
+    public void setEntendendoCodigo(Entendendo_Codigo entendendoCodigo){
         this.entendendoCodigo = entendendoCodigo;
     }
 
-    public Requisito getRequisito() {
+    public Requisito getRequisito(){
         return requisito;
     }
 
-    public void setRequisito(Requisito requisito) {
+    public void setRequisito(Requisito requisito){
         this.requisito = requisito;
     }
 
-    public Submeter_Mudanca getSubmeterMudanca() {
+    public Submeter_Mudanca getSubmeterMudanca(){
         return submeterMudanca;
     }
 
-    public void setSubmeterMudanca(Submeter_Mudanca submeterMudanca) {
+    public void setSubmeterMudanca(Submeter_Mudanca submeterMudanca){
         this.submeterMudanca = submeterMudanca;
     }
 

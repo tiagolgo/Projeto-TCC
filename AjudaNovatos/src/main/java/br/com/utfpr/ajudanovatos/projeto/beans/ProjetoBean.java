@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class ProjetoBean implements Serializable {
 
     private long id;
-    private String nome;
+    private String nome, logotipo;
 
     public long getId() {
         return id;
@@ -30,6 +30,14 @@ public class ProjetoBean implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getLogotipo() {
+        return logotipo;
+    }
+
+    public void setLogotipo(String logotipo) {
+        this.logotipo = logotipo;
     }
 
 }

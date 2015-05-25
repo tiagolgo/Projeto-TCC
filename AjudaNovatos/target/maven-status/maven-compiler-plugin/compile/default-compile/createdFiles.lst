@@ -3,12 +3,12 @@ br\com\utfpr\ajudanovatos\projeto\infos\Linguagem_.class
 br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Feed_.class
 br\com\utfpr\ajudanovatos\controller\LoginController.class
 br\com\utfpr\ajudanovatos\entidade\usuario\UsuarioLogado.class
-br\com\utfpr\ajudanovatos\controller\Upload_File.class
 Dao\especificos\DaoProjeto.class
 br\com\utfpr\ajudanovatos\controller\IndexController.class
 br\com\utfpr\ajudanovatos\controller\ComentarioController.class
 br\com\utfpr\ajudanovatos\entidade\usuario\Senha.class
 br\com\utfpr\ajudanovatos\projeto\opcoes\Entendendo_Codigo.class
+br\com\utfpr\ajudanovatos\utils\ThreadProvider.class
 br\com\utfpr\ajudanovatos\controller\LocaleController.class
 br\com\utfpr\ajudanovatos\projeto\beans\LinguagemBean.class
 br\com\utfpr\ajudanovatos\projeto\comentario\Comentario.class
@@ -22,6 +22,7 @@ br\com\utfpr\ajudanovatos\projeto\opcoes\Configurar_Workspace_.class
 br\com\utfpr\ajudanovatos\projeto\opcoes\Comunicacao.class
 Dao\especificos\DaoUsuario.class
 br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Feed.class
+br\com\utfpr\ajudanovatos\controller\UtilsController.class
 br\com\utfpr\ajudanovatos\projeto\Projeto_.class
 br\com\utfpr\ajudanovatos\projeto\opcoes\Comunicacao_.class
 br\com\utfpr\ajudanovatos\projeto\opcoes\Entendendo_Codigo_.class
@@ -37,7 +38,6 @@ br\com\utfpr\ajudanovatos\entidade\usuario\Usuario_.class
 br\com\utfpr\ajudanovatos\projeto\comentario\Comentario_.class
 br\com\utfpr\ajudanovatos\projeto\infos\Plataforma.class
 br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Pesquisar_Antes.class
-Upload\UploadImagem.class
 Dao\especificos\DaoLinguagem.class
 br\com\utfpr\ajudanovatos\projeto\opcoes\Submeter_Mudanca_.class
 br\com\utfpr\ajudanovatos\projeto\Projeto.class
@@ -45,6 +45,7 @@ br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Encontrar_Mentor_.class
 br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Tarefa_Facil_.class
 br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Tarefa_Facil.class
 Dao\Dao_Basic.class
+Dao\especificos\DaoUtils.class
 br\com\utfpr\ajudanovatos\projeto\beans\ProjetoBean.class
 Dados_Globais\Dados.class
 br\com\utfpr\ajudanovatos\controller\ProjetoController.class
@@ -55,7 +56,9 @@ br\com\utfpr\ajudanovatos\projeto\opcoes\Submeter_Mudanca.class
 br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Lista_Discussao_.class
 br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Fluxo_Contribuicao.class
 Conexao\ConexaoBanco.class
+br\com\utfpr\ajudanovatos\utils\EncriptacaoPassword.class
 br\com\utfpr\ajudanovatos\projeto\opcoes\objetos\Chat_Irc.class
 br\com\utfpr\ajudanovatos\projeto\opcoes\Configurar_Workspace.class
-Interceptor\Set_Infos.class
+br\com\utfpr\ajudanovatos\utils\SendMailController.class
+br\com\utfpr\ajudanovatos\utils\UploadImagem.class
 br\com\utfpr\ajudanovatos\projeto\infos\Repositorio.class

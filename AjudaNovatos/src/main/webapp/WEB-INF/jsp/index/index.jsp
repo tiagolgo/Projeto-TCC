@@ -7,6 +7,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <%@page errorPage="../erros/404.jsp" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<c:if test="${not empty lingua}">
+  <fmt:setLocale value="${lingua}" scope="session"/>
+</c:if>
 <!DOCTYPE html>
 <html lang="pt">
     <head>
@@ -25,7 +30,7 @@
                         <legend>
                             <h1 class="heading">Ajuda Novatos</h1>   
                         </legend>
-                        <a href="<c:url value="/upload/form"/>">Upload de Imagem</a>
+                        <a href="<c:url value="/enviarEmail"/>"></a>
                         <h3>${t["index.dash.titulo"]}</h3>
                         <p>${t["index.dash.texto"]}</p>
                     </fieldset>
@@ -36,11 +41,11 @@
                         <div class="panel">
                             <div class="panel-header" style="border-top: 2px solid #004e9d; color: #004e9d">${t["index.list.projetos"]}</div>
                             <div class="panel-content">
-                                <c:forEach var="projeto" items="${informacoesProjetos.projetos}">
+                                <c:forEach var="projeto" items="${informacoesProjetos.projetosAntigo}">
                                     <div class="listview small">
-                                        <a href="#" class="list">
+                                        <a href="<c:url value="${t['url.buscar.projeto.id']}?id=${projeto.id}"/>" class="list">
                                             <div class="list-content">
-                                                <img src="/AjudaNovatos/images/word.png" class="icon">
+                                                <img src="<c:url value="/images/logo/"/>${projeto.logotipo}" class="icon"/>
                                                 <div class="data">
                                                     <span class="list-title"><c:out value="${projeto.nome}"/></span>
                                                     <!--<div id="nota" class="rating active small fg-red no-margin" data-score="2" data-stars="5" data-role="rating"></div>-->
@@ -61,13 +66,13 @@
                             <div class="panel-content">
                                 <c:forEach var="linguagem" items="${informacoesProjetos.linguagens}">
                                     <div class="listview small">
-                                        <a href="<c:url value="${t['url.projeto.linguagem']}${linguagem[1]}"/>" class="list">
+                                        <a href="<c:url value="${t['url.projeto.linguagem']}?q=${linguagem.texto}"/>" class="list">
                                             <div class="list-content">
-                                                <img src="/AjudaNovatos/images/word.png" class="icon">
+                                                <img src="<c:url value="/images/logo_linguagens/"/>${linguagem.texto}.png" class="icon"/>
                                                 <div class="data">
-                                                    <span class="list-title"><c:out value="${linguagem[1]}"/></span>
+                                                    <span class="list-title text-bold"><c:out value="${linguagem.texto}"/></span>
                                                     <!--<div class="progress-bar small" data-role="progress-bar" data-value="75"></div>-->
-                                                    <span class="list-remark"><c:out value="${linguagem[0]}"/> </span>                                                </div>
+                                                    <span class="list-remark">Utilizada em <c:out value="${linguagem.quantidade}"/> projetos</span>                                                </div>
                                             </div>
                                         </a>
                                     </div>  
@@ -83,12 +88,12 @@
                             <div class="panel-header" style="border-top: 2px solid #004e9d; color: #004e9d">${t["index.list.novidades"]}</div>
                             <div class="panel-content">
                                 <div class="listview small">
-                                    <c:forEach var="recentes" items="${informacoesProjetos.projetosRecentes}">
-                                        <a href="<c:url value="${t['url.buscar.projeto.id']}${recentes.id}"/>" class="list">
+                                    <c:forEach var="recente" items="${informacoesProjetos.projetosRecente}">
+                                        <a href="<c:url value="${t['url.buscar.projeto.id']}?id=${recente.id}"/>" class="list">
                                             <div class="list-content">
-                                                <img src="/AjudaNovatos/images/word.png" class="icon">
+                                                <img src="<c:url value="/images/logo/"/>${recente.logotipo}" class="icon"/>
                                                 <div class="data">
-                                                    <span class="list-title"><c:out value="${recentes.nome}"/></span>
+                                                    <span class="list-title"><c:out value="${recente.nome}"/></span>
                                                     <span class="rating active small fg-red no-margin" data-score="2" data-stars="5" data-role="rating"></span>
                                                 </div>
                                             </div>
@@ -114,12 +119,12 @@
                 </div>
                 <div class="bottom-menu-wrapper">
                     <ul class="horizontal-menu compact">
-                        <li>&copy; 2014 Metro UI CSS</li>
-                        <li><a href="#">Privacy</a></li>
-                        <li><a href="#">Legal</a></li>
-                        <li><a href="#">Advertise</a></li>
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">Feedback</a></li>
+                        <li></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
                     </ul>
                 </div>
             </footer>

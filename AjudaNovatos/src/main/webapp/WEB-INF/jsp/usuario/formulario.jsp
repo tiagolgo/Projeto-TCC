@@ -32,7 +32,7 @@
                                         </c:forEach>
                                     </div>
                                 </c:if>
-                                <form method="post" action="<c:url value="${['url.salvar.usuario']}"/>" id="form-novo-usuario">
+                                <form method="post" action="<c:url value="${t['url.salvar.usuario']}"/>" id="form-novo-usuario">
                                     <div class="input-control text">
                                         <input type="text" value="" id="nome" name="usuario.nome" placeholder="${t["cadastro.placeholder.nome"]}"/>
                                         <button class="btn-clear"></button>
@@ -50,7 +50,7 @@
                                         <button class="btn-reveal"></button>
                                     </div>
                                     <input type="submit" id="salvarUser" class="bg-green fg-white" value="${t["btn.enviar"]}"/>
-                                    <input type="button" class="bg-orange fg-white" value="${t["btn.cancelar"]}"/>
+                                    <a href="/" class="button bg-orange fg-white"> ${t["btn.cancelar"]}</a>
                                 </form>
                             </div>
                         </div>
@@ -61,9 +61,10 @@
         <script type="text/javascript">
 
             $(function () {
-                $('#salvarUser').on('click', function (event) {
+                $('#').on('click', function (event) {
                     var nome = $('#nome').val();
                     var login = $('#login').val();
+                    var email = $('#email').val();
                     var senha = $('#senha').val();
                     var verificacaoSenha = $('#verificacaoSenha').val();
                     var submitForm = true;
@@ -74,6 +75,10 @@
 
                     if (login === '') {
                         $('#login').addClass("fg-red text-italic").val('Informe o login');
+                        submitForm = false;
+                    }
+                    if (email === '') {
+                        $('#email').addClass("fg-red text-italic").val('Informe o email');
                         submitForm = false;
                     }
 
@@ -100,6 +105,9 @@
                     $(this).val('').removeClass('fg-red text-italic');
                 });
                 $('#login').focusin(function () {
+                    $(this).val('').removeClass('fg-red text-italic');
+                });
+                $('#email').focusin(function () {
                     $(this).val('').removeClass('fg-red text-italic');
                 });
                 $('#senha').focusin(function () {

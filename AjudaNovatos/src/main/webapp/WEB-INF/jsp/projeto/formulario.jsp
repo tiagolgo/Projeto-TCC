@@ -19,11 +19,11 @@
         <div class="container">
             <c:import url="../componentes/internacionalizacao.jsp"/>
             <c:choose>
-                <c:when test="${option=='update'}">
-                    <h1 style="margin-top: 2%;margin-bottom: 2%">Alterar projeto</h1>
+                <c:when test="${projeto!=null}">
+                    <h1 style="margin-top: 2%;margin-bottom: 2%">Alterar meu projeto</h1>
                 </c:when>
                 <c:otherwise>
-                    <h1 style="margin-top: 2%;margin-bottom: 2%">Adicionar projeto</h1>
+                    <h1 style="margin-top: 2%;margin-bottom: 2%">Adicionar meu projeto</h1>
                 </c:otherwise>
             </c:choose>
             <form id="dados-form" method="POST" action="<c:url value="${t['url.salvar.projeto']}"/>" enctype="multipart/form-data">
@@ -37,10 +37,10 @@
                         <li id="tab5"><a href="#tab_5">Comunicação</a></li>
                         <li id="tab6"><a href="#tab_6">Entender Código</a></li>
                         <li id="tab7"><a href="#tab_7">Submissão de Mudanças</a></li>
-                        <li style="width: auto;float: right; text-align: right">
-                            <input style="height: 30px" type="submit" class="bg-green fg-white" value="Salvar">
-                            <a href='<c:url value="${t['url.home']}"/>' class="bg-orange fg-white button"> Cancelar</a>
-                        </li>
+                        <div class="place-right">
+                            <input type="submit" class="button bg-green fg-white" value="Salvar">
+                            <a href='<c:url value="${t['url.home']}"/>' class="button bg-orange fg-white"> Cancelar</a>
+                        </div>
                     </ul>
 
                     <div class="frames">
@@ -148,6 +148,7 @@
                                                         <c:forEach var="lang" items="${projeto.linguagens}" varStatus="cont">
                                                             <tr>
                                                                 <td>
+                                                                    <input type="hidden" value="${lang.id}" name="projeto.linguagens[${cont.count-1}].id"/>
                                                                     <input type="hidden" value="${lang.texto}" name="projeto.linguagens[${cont.count-1}].texto"/>
                                                                     ${lang.texto}                                                               
                                                                 </td>
@@ -184,6 +185,7 @@
                                                         <c:forEach var="plataforma" items="${projeto.plataformas}" varStatus="cont">
                                                             <tr>
                                                                 <td>
+                                                                    <input type="hidden" value="${plataforma.id}" name="projeto.plataformas[${cont.count-1}].id"/>
                                                                     <input type="hidden" value="${plataforma.texto}" name="projeto.plataformas[${cont.count-1}].texto"/>
                                                                     ${plataforma.texto}
                                                                 </td>
@@ -199,11 +201,6 @@
                                                 <input style="height: 30px" type="button" class="bg-green fg-white" value="Inserir" id="add_plataforma"/>
                                             </div>
                                         </div>  
-                                        <label class="text-bold border-top">Logotipo do projeto</label>
-                                        <div class="input-control file">
-                                            <input type="file" name="imagem"/>
-                                            <button class="btn-file"></button>
-                                        </div>
                                     </div>
 
                                     <div class="span7" style="float: right">

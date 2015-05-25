@@ -27,17 +27,14 @@ public class IndexController {
 
     @Path(value = {"/"})
     public void index() {
-        System.out.println("no index controle");
         if (!this.informacoes.isAtualizado()) {
-            List<ProjetoBean> recentes = this.dp.getRecentes();
-            List<ProjetoBean> projetos = this.dp.getPaginacao(0, 10);
-            List linguagens = this.dp.getLinguagens();
-            //Object projetoCount = this.dp.projetoCount();
+           // List<ProjetoBean> recentes = this.dp.getPaginacao(0, 10, true);
+           // List<ProjetoBean> projetos = this.dp.getPaginacao(0, 10, false);
+           // List linguagens = this.dp.listLinguagens();
             this.informacoes.setAtualizado(true);
-            this.informacoes.setLinguagens(linguagens);
-            this.informacoes.setProjetos(projetos);
-            this.informacoes.setProjetosRecentes(recentes);
-            //this.informacoes.setTotalProjetos((Integer.parseInt(projetoCount.toString())));
+            this.informacoes.setLinguagens(this.dp.listLinguagens());
+            this.informacoes.setProjetosAntigo(this.dp.getPaginacao(0, 10, false));
+            this.informacoes.setProjetosRecente(this.dp.getPaginacao(0, 10, true));
         }
     }
 }

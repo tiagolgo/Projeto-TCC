@@ -41,7 +41,7 @@
             <c:import url="../componentes/internacionalizacao.jsp"/>
 
             <div style="margin-top: 2%;margin-bottom: 2%; padding: 5px;">
-                <h1 class="text-bold"><c:out value="${projeto.nome}"/></h1>
+                <h1 class="text-bold"><img src="<c:url value="/images/logo/"/>${projeto.logotipo}" width="70px"/> <c:out value="${projeto.nome}"/></h1>
                 <div class="fb-like place-right" data-href="https://developers.facebook.com/docs/plugins/" data-width="600" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
             </div>
             <div class="tab-control" data-role="tab-control">
@@ -66,11 +66,11 @@
                         <div class="grid fluid">
                             <div class="row">
                                 <div class="span6">
-                                    <p><span class="text-bold">${t["projeto.pagina"]}</span><a href="http://<c:out value="${projeto.site}"/>" target="_blank">${projeto.site}</a></p>
-                                    <p><span class="text-bold">${t["projeto.bug"]}</span> <a href="http://<c:out value="${projeto.gestorBug}"/>" target="_blank">${projeto.gestorBug}</a></p>
-                                    <p><span class="text-bold">${t["projeto.repositorio"]}</span><a href="http://<c:out value="${projeto.repositorio.link}"/>" target="_blank">${projeto.repositorio.link}</a></p>
-                                    <p><span class="text-bold">${t["projeto.lista"]}</span><a href="<c:out value="${projeto.listaDiscussao}"/>" target="_blank">${projeto.listaDiscussao}</a></p>
-                                    <p><span class="text-bold">${t["projeto.wiki"]}</span><a href="<c:out value="${projeto.wiki}"/>" target="_blank">${projeto.wiki}</a></p>
+                                    <p><span class="text-bold">${t["projeto.pagina"]}</span><a href="http://<c:out value="${projeto.site}"/>" target="_blank"> ${projeto.site}</a></p>
+                                    <p><span class="text-bold">${t["projeto.bug"]}</span> <a href="http://<c:out value="${projeto.gestorBug}"/>" target="_blank"> ${projeto.gestorBug}</a></p>
+                                    <p><span class="text-bold">${t["projeto.repositorio"]}</span><a href="http://<c:out value="${projeto.repositorio.link}"/>" target="_blank"> ${projeto.repositorio.link}</a></p>
+                                    <p><span class="text-bold">${t["projeto.lista"]}</span><a href="<c:out value="${projeto.listaDiscussao}"/>" target="_blank"> ${projeto.listaDiscussao}</a></p>
+                                    <p><span class="text-bold">${t["projeto.wiki"]}</span><a href="<c:out value="${projeto.wiki}"/>" target="_blank"> ${projeto.wiki}</a></p>
                                     <p><span class="text-bold">${t["projeto.plataforma"]}</span>                                        
                                         <span class="fg-lightBlue"><c:out value="${projeto.plataformas.toString().replace('[','').replace(']','')}"/></span>
                                     </p>

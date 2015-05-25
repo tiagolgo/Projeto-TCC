@@ -30,8 +30,8 @@
                                 <ul class="dropdown-menu bg-grayLighter" data-role="dropdown">
                                     <c:forEach items="${informacoesProjetos.getLinguagens()}" var="linguagem">
                                         <li >
-                                            <a href="<c:url value="${t['url.projeto.linguagem']}${linguagem[1]}"/>" >
-                                                <c:out value="${linguagem[1]}"/>
+                                            <a href="<c:url value="${t['url.projeto.linguagem']}?q=${linguagem.texto}"/>" >
+                                                <c:out value="${linguagem.texto}"/>
                                             </a>
                                         </li>
                                     </c:forEach>
@@ -75,7 +75,7 @@
                                                 }).done(function (data) {
                                                     $.each(data.list, function (index, value) {
                                                         console.log($(value).size());
-                                                        $("#sugestao #items").prepend("<li><a href='#' class='fg-hover-blue'>" + value[1] + "</a></li>");
+                                                        $("#sugestao #items").prepend("<li><a href='' class='fg-hover-blue'>" + value[1] + "</a></li>");
                                                     });
                                                     $("#sugestao").show();
                                                 }).fail(function (data) {

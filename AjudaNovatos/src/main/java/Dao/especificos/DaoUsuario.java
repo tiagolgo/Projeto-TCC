@@ -19,18 +19,18 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author Tiago Luiz Gomes
  */
-public class DaoUsuario extends Dao_Basic <Usuario> {
+public class DaoUsuario extends Dao_Basic<Usuario> {
 
     @Inject
-    public DaoUsuario(Session s) {
-        session = s;
+    public DaoUsuario(Session sessao) {
+        session = sessao;
         classe = Usuario.class;
     }
 
-    public Usuario getUserAutenticado(String login, String senha) {
+    public Usuario usuarioAutenticado(String email, String senha) {
         try {
             Criteria c = session.createCriteria(classe);
-            c.add(Restrictions.eq("login", login));
+            c.add(Restrictions.eq("email", email));
             Criteria c2 = c.createCriteria("password");
             c2.add(Restrictions.eq("senha", senha));
             return (Usuario) c.uniqueResult();
@@ -39,9 +39,17 @@ public class DaoUsuario extends Dao_Basic <Usuario> {
         }
     }
 
-    public List getProjetosUser(Long id) throws HibernateException{
+    public List usuarioProjetos(Long id) throws HibernateException {
         Criteria c = session.createCriteria(Projeto.class);
         c.add(Restrictions.eq("usuario", id));
         return c.list();
     }
+
+    public boolean seUsuarioExiste(String email) {
+        Criteria c = session.createCriteria(classe);
+        c.add(Restrictions.eq("email", email));
+        Object r = c.uniqueResult();
+        return r != null;
+    }
+
 }
