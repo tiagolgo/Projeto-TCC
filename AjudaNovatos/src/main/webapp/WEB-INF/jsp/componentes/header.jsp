@@ -8,11 +8,11 @@
         <!-- CSS -->
         <link href="/AjudaNovatos/css/metro-bootstrap.css" rel="stylesheet">
         <link href="/AjudaNovatos/css/metro-bootstrap-responsive.css" rel="stylesheet">
-        <link href="/AjudaNovatos/css/iconFont.css" rel="stylesheet">
+        <!--<link href="/AjudaNovatos/css/iconFont.css" rel="stylesheet">-->
         <!-- JAVASCRIPT -->
         <script src="/AjudaNovatos/js/jquery.min.js"></script>
         <script src="/AjudaNovatos/js/jquery.widget.min.js"></script>
-        <script src="/AjudaNovatos/js/jquery.mousewheel.js"></script>
+        <!--<script src="/AjudaNovatos/js/jquery.mousewheel.js"></script>-->
         <script src="/AjudaNovatos/js/metro.min.js"></script>
     </head>
     <body>

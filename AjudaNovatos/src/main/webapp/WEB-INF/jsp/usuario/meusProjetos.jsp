@@ -35,11 +35,11 @@
                                 <c:forEach var="projeto" items="${projetosUser}">
                                     <div class="row border-bottom">
                                         <div class="span2">
-                                            <div class="tile border">
+                                            <a href="<c:url value="${t['url.buscar.projeto.id']}?id=${projeto.id}"/>" class="tile border">
                                                 <div class="tile-content icon">
                                                     <img src="<c:url value="/images/logo/"/>${projeto.logotipo}"/>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </div>
                                         <div class="span6 place-right">
                                             <h4>${projeto.nome}</h4>
@@ -47,7 +47,7 @@
                                             <a class="button small bg-orange fg-white" href="<c:url value="${t['url.editar.projeto.id']}?id=${projeto.id}"/>"> Editar</a>
                                             <input class="button small bg-red fg-white" type="button" value="Remover" onclick="removerProjeto(${projeto.id});"/>
                                             <form id="projeto_${projeto.id}" action="<c:url value="${t['url.remove.projeto']}"/>" method="post">
-                                                <input type="hidden" name="projeto"  value="${projeto.id}"/>
+                                                <input type="hidden" name="id"  value="${projeto.id}"/>
                                                 <input type="hidden" name="_method" value="DELETE"/>
                                             </form>
                                         </div>

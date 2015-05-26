@@ -82,6 +82,7 @@ public class Dao_Basic<T> implements Dao<T> {
         try {
             SQLQuery q = session.createSQLQuery("delete from "+classe+" where id = "+id);
             q.executeUpdate();
+            session.beginTransaction().commit();
             session.flush();
             return true;
         } catch (Exception e) {

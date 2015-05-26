@@ -18,96 +18,122 @@
         <div class="container">
             <c:import url="../componentes/internacionalizacao.jsp"/>
             <center>
-                <div class="grid">
-                    <div class="span8">
-                        <div class="success">
-                            <c:out value="${successo}"/>
-                        </div>
-                        <div class="panel text-left">
-                            <div class="panel-header">
-                                Dados Cadastrais
+                <div class="success">
+                    <c:out value="${successo}"/>
+                </div>
+                <div class="panel text-left" style="margin-top: 80px">
+                    <div class="panel-header">
+                        <h2> Dados Cadastrais</h2>
+                    </div>
+                    <div class="panel-content padding10">
+                        <form method="post" action="<c:url value="${t['url.salvar.usuario']}"/>" id="form-novo-usuario">
+                            <div class="grid fluid">
+                                <div class="row">
+                                    <div class="span6 border padding10">
+                                        <label class="text-bold">Nome</label>
+                                        <div class="input-control text">
+                                            <input type="text" id="nome" name="usuario.nome" value="${usuario.nome}" placeholder="Nome" disabled="true"/>
+                                            <button class="btn-clear"></button>
+                                        </div>
+                                        <label class="text-bold">Email</label>
+                                        <div class="input-control text">
+                                            <input type="text" value="${usuario.email}" id="email" name="usuario.email" placeholder="E-mail" disabled="true"/>
+                                            <button class="btn-clear"></button>
+                                        </div>
+                                        <div class="input-control switch">
+                                            <label class="fg-blue">
+                                                Alterar Nome e Email
+                                                <input type="checkbox" id="dados-pessoais"/>
+                                                <span class="check"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="span6 border padding10">
+                                        <label class="text-bold">Senha</label>
+                                        <div class="input-control password">
+                                            <input type="password" value="" id="senha" name="usuario.password.senha" placeholder="Senha" disabled="true"/>
+                                            <button class="btn-reveal"></button>
+                                        </div>
+                                        <label class="text-bold">Confirmação de Senha</label>
+                                        <div class="input-control password">
+                                            <input type="password" value="" id="versenha" placeholder="Repita a senha" disabled="true"/>
+                                            <button class="btn-reveal"></button>
+                                        </div>
+                                        <div class="input-control switch">
+                                            <label class="fg-blue">
+                                                Alterar Senha 
+                                                <input type="checkbox" id="dados-autenticacao"/>
+                                                <span class="check"></span>
+                                            </label>
+                                        </div>
+                                    </div>                
+                                    <script type="text/javascript">
+                                        $(function () {
+                                            $("#dados-pessoais").on("change", function () {
+                                                var x = document.getElementById("dados-pessoais").checked;
+                                                if (x) {
+                                                    $("#nome,#email").attr("disabled", false);
+                                                } else {
+                                                    $("#nome,#email").attr("disabled", true);
+                                                }
+                                            });
+
+                                            $("#dados-autenticacao").on("change", function () {
+                                                var x = document.getElementById("dados-autenticacao").checked;
+                                                if (x) {
+                                                    $("#senha,#versenha").attr("disabled", false);
+                                                } else {
+                                                    $("#senha,#versenha").attr("disabled", true);
+                                                }
+                                            });
+                                        });
+                                    </script>
+                                </div>
                             </div>
-                            <div class="panel-content padding10">
-                                <form method="post" action="<c:url value="${['url.salvar.usuario']}"/>" id="form-novo-usuario">
-                                    <div class="input-control text">
-                                        <input type="text" id="nome" name="usuario.nome" value="${usuario.nome}" placeholder="Nome"/>
-                                        <button class="btn-clear"></button>
-                                    </div>
-                                    <div class="input-control text">
-                                        <input type="text" value="${usuario.email}" id="email" name="usuario.email" placeholder="E-mail"/>
-                                        <button class="btn-clear"></button>
-                                    </div>
-                                    <div class="input-control text">
-                                        <input type="text" value="${usuario.login}" id="login" name="usuario.login" placeholder="Login"/>
-                                        <button class="btn-clear"></button>
-                                    </div>
-                                    <div class="input-control password">
-                                        <input type="password" value="" id="senha" name="usuario.password.senha" placeholder="Senha"/>
-                                        <button class="btn-reveal"></button>
-                                    </div>
-                                    <div class="input-control password">
-                                        <input type="password" value="" id="versenha" placeholder="Repita a senha"/>
-                                        <button class="btn-reveal"></button>
-                                    </div>
-                                    <input type="submit" class="bg-green fg-white" value="Salvar"/>
-                                    <input type="button" class="bg-orange fg-white" value="Cancelar"/>
-                                </form>
-                            </div>
-                        </div>
-                    </div>               
+                            <input type="button" class="bg-green fg-white" value="Salvar" id="salvar-dados"/>
+                            <input type="button" class="bg-orange fg-white" value="Cancelar"/>
+                        </form>
+                    </div>
                 </div>
             </center>
         </div>
         <script type="text/javascript">
-            /*
-             $(function () {
-             $('#form-novo-usuario').on('submit', function (event) {
-             event.preventDefault();
-             var nome = $('#nome').val();
-             var mail = $('#email').val();
-             var login = $('#login').val();
-             var senha = $('#senha').val();
-             
-             if (nome == '') {
-             $('#nome').addClass("fg-red text-italic").val('Informe o nome');
-             }
-             if (mail == '') {
-             $('#email').addClass("fg-red text-italic").val('Informe o email');
-             }
-             if (login == '') {
-             $('#login').addClass("fg-red text-italic").val('Informe o login');
-             }
-             if (senha == '') {
-             $('#senha').addClass("fg-red text-italic").attr("type", 'text').val('Informe a senha');
-             }
-             });
-             
-             //REMOVER ALERTAS DE ERRO
-             $('#nome').focusin(function () {
-             $(this).val('').removeClass('fg-red text-italic');
-             });
-             $('#email').focusin(function () {
-             $(this).val('').removeClass('fg-red text-italic');
-             });
-             $('#login').focusin(function () {
-             $(this).val('').removeClass('fg-red text-italic');
-             });
-             $('#senha').focusin(function () {
-             $(this).val('').attr("type", "password").removeClass('fg-red text-italic');
-             });
-             $('#versenha').focusin(function () {
-             $(this).val('').attr("type", "password").removeClass('fg-red text-italic');
-             });
-             
-             $('#versenha').blur(function () {
-             var senha = $('#senha').val();
-             var aux = $(this).val();
-             
-             if (senha != aux) {
-             $(this).addClass("fg-red text-italic").attr("type", 'text').val('Senha não confere');
-             }
-             });
-             });*/
+
+            $(function () {
+                $('#salvar-dados').on('click', function (event) {
+                    var nome = $('#nome').val();
+                    var mail = $('#email').val();
+                    var senha = $('#senha').val();
+                    var versenha = $("#versenha").val();
+                    var submit = true;
+                    if (nome === "") {
+                        $('#nome').parent(".input-control").addClass("error-state");
+                        submit = false;
+                    }
+                    if (mail == "") {
+                        $('#email').parent(".input-control").addClass("error-state");
+                        submit = false;
+                    }
+                    if (senha == "") {
+                        $('#senha').parent(".input-control").addClass("error-state");
+                        submit = false;
+                    } else {
+                        if (senha !== versenha) {
+                            $('#versenha').parent(".input-control").addClass("error-state");
+                            submit = false;
+                        }
+                    }
+                    if (submit) {
+                        submit = true;
+                        alert("submeter ");
+                    }
+                });
+
+                //REMOVER ALERTAS DE ERRO
+                $('#nome, #email, #senha, #versenha').focusin(function () {
+                    $(this).parent(".input-control").removeClass('error-state');
+                });
+            });
         </script>
     </body>
 </html>

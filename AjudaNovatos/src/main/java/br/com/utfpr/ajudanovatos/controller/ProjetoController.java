@@ -92,8 +92,9 @@ public class ProjetoController {
             this.result.include("msg", "Projeto removido com sucesso!");
         } catch (Exception e) {
             this.result.include("msg", "Erro ao tentar remover projeto");
+        } finally {
+            this.result.forwardTo(UsuarioController.class).meusProjetos();
         }
-        this.result.forwardTo(UsuarioController.class).meusProjetos();
     }
 
     @Get(value = {"pt/projetos/lista", "en/projects/list"})
