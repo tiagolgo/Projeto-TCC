@@ -11,12 +11,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author Tiago Luiz Gomes
  */
 @Entity
+@Table(name = "usuario")
 public class Usuario implements Serializable {
 
     @Id

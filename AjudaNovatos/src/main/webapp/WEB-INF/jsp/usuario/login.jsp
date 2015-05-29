@@ -18,9 +18,9 @@
         <div class="container">
             <c:import url="../componentes/internacionalizacao.jsp"/>
             <center>
-                <div class="grid">
+                <div class="grid" style="margin-top: 5%">
                     <div class="span8 padding20">
-                        <div class="panel text-left margin10">
+                        <div class="panel text-left margin10" >
                             <div class="panel-header bg-darkGreen fg-white">
                                 ${t["login.div.titulo"]}
                             </div>
@@ -35,13 +35,13 @@
                                 <form action="<c:url value="/login"/>" method="POST" id="formLogin">
                                     <div class="row">
                                         <div class="input-control text" style="margin-top: 2%">
-                                            <input type="text" id="login" name="login" value="" placeholder="login" style="height: 40px"/>
+                                            <input type="text" id="login" name="login" value="" placeholder="Email" style="height: 40px"/>
                                             <button class="btn-clear"></button>
                                         </div>
                                     </div>
                                     <div class="row" style="margin-top: 2%">
                                         <div class="input-control text bg-red">
-                                            <input type="password" id="senha" name="senha" value="" placeholder="senha" style="height: 40px"/>
+                                            <input type="password" id="senha" name="senha" value="" placeholder="Senha" style="height: 40px"/>
                                             <button class="btn-clear"></button>
                                         </div>
                                     </div>
@@ -49,7 +49,7 @@
                                         <div class="row">
                                             <div class="span6">
                                                 <input type="button" value="${t["btn.enviar"]}" id="btnLogin"/>
-                                                <a class="button" href="<c:url value="/"/>"> ${t["btn.cancelar"]} </a>
+                                                <a class="button" href="<c:url value="${t['url.home']}"/>"> ${t["btn.cancelar"]} </a>
                                             </div>
                                         </div>
                                         <div class="row">

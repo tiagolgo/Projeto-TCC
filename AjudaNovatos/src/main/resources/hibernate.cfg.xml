@@ -6,14 +6,15 @@
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">tiago</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost/tcc2</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost/tcc?createDatabaseIfNotExist=true</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.connection.autocommit">false</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
         <property name="hibernate.transaction.auto_close_session">false</property>
-                       
+        
+        <!--                           
         <mapping class="br.com.utfpr.ajudanovatos.entidade.usuario.Senha" />
         <mapping class="br.com.utfpr.ajudanovatos.entidade.usuario.Usuario" />
         
@@ -39,5 +40,6 @@
         <mapping class="br.com.utfpr.ajudanovatos.projeto.opcoes.objetos.Pesquisar_Antes" />
         <mapping class="br.com.utfpr.ajudanovatos.projeto.opcoes.objetos.Tarefa_Facil" />
         <mapping class="br.com.utfpr.ajudanovatos.projeto.opcoes.objetos.Feed" />
+        -->
     </session-factory>
 </hibernate-configuration>

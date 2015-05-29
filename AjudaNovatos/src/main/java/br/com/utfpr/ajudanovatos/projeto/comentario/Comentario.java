@@ -10,12 +10,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author Tiago Luiz Gomes
  */
 @Entity
+@Table(name = "comentario")
 public class Comentario implements Serializable {
 
     @Id

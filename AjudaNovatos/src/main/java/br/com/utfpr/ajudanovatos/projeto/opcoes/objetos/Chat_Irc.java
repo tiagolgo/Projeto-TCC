@@ -16,12 +16,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author Tiago Luiz Gomes
  */
 @Entity
+@Table(name="chat_irc")
 public class Chat_Irc implements Serializable {
 
     @Id

@@ -9,18 +9,21 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author Tiago Luiz Gomes
  */
 @Entity
+@Table(name = "linguagem")
 public class Linguagem implements Serializable {
 
     @Id
     @GeneratedValue
     private long id;
     private String texto;
+    private String logo;
 
     public long getId() {
         return id;
@@ -38,6 +41,15 @@ public class Linguagem implements Serializable {
         this.texto = texto;
     }
 
+    public String getLogo(){
+        return logo;
+    }
+
+    public void setLogo(String logo){
+        this.logo = logo;
+    }
+
+    
     @Override
     public String toString() {
         return texto;

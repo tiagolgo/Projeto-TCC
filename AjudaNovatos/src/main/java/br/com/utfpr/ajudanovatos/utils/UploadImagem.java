@@ -36,9 +36,9 @@ public class UploadImagem {
     public UploadImagem(ServletContext context){
         this.context = context;
         if (this.pastaImagens==null) {
-           // String caminhoImagens = this.context.getRealPath("/images/logo");
-            //pastaImagens = new File(caminhoImagens);
-            pastaImagens = new File("C:/Projeto-TCC/AjudaNovatos/src/main/webapp/images/logo");
+           String caminhoImagens = this.context.getRealPath("/images/logo");
+            pastaImagens = new File(caminhoImagens);
+            //pastaImagens = new File("C:/Projeto-TCC/AjudaNovatos/src/main/webapp/images/logo");
             pastaImagens.mkdir();
             pastaImagens.setWritable(true);
         }

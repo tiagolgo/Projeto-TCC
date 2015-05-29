@@ -56,12 +56,14 @@ public class UsuarioController {
             if (this.userLogado.getId()>0) {
                 usuario.setId(this.userLogado.getId());
             }
+            String email=usuario.getEmail();
+            String senhaTexto=usuario.getPassword().getSenha();
             String senha = this.encriptacao.encripta(usuario.getPassword().getSenha());
             usuario.getPassword().setSenha(senha);
             this.dao.persiste(usuario);
+            this.result.forwardTo(LoginController.class).login(email,senhaTexto);
         } catch (HibernateException e) {
             e.printStackTrace();
-        } finally {
             this.result.of(this).formulario();
         }
     }

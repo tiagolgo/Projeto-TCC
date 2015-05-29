@@ -66,10 +66,10 @@ public class Dados {
                 break;
             }
         }
-        if (!existe&&this.projetosRecente.size()<10) {
+        if (!existe&&this.projetosRecente.size()==10) {
             this.projetosRecente.remove(9);
-            this.projetosRecente.add(0, projeto);
         }
+        this.projetosRecente.add(0, projeto);
 
         this.totalProjetos = totalProjetos+1;
     }
@@ -78,7 +78,6 @@ public class Dados {
         boolean existe = false;
         for (ProjetoBean p : this.projetosAntigo) {
             if (p.getNome().equals(projeto.getNome())) {
-                this.projetosAntigo.add(projeto);
                 p.setId(projeto.getId());
                 p.setLogotipo(projeto.getLogotipo());
                 p.setNome(projeto.getNome());
@@ -116,7 +115,7 @@ public class Dados {
         }
         this.linguagens.clear();
         for (Map.Entry<String, Integer> entrySet : totais.entrySet()) {
-            LinguagemBean lb=new LinguagemBean();
+            LinguagemBean lb = new LinguagemBean();
             lb.setTexto(entrySet.getKey());
             lb.setQuantidade(entrySet.getValue());
             this.linguagens.add(lb);
@@ -126,20 +125,20 @@ public class Dados {
     public HashMap<String, Integer> getTotais(){
         return totais;
     }
-    
+
     public void updateLogo(String projeto, String logo){
-        for (ProjetoBean p: this.projetosAntigo) {
-            if(p.getNome().equals(projeto)){
+        for (ProjetoBean p : this.projetosAntigo) {
+            if (p.getNome().equals(projeto)) {
                 p.setLogotipo(logo);
                 break;
             }
         }
-        for(ProjetoBean p:this.projetosRecente){
-            if(p.getNome().equals(projeto)){
+        for (ProjetoBean p : this.projetosRecente) {
+            if (p.getNome().equals(projeto)) {
                 p.setLogotipo(logo);
                 break;
             }
         }
     }
-    
+
 }

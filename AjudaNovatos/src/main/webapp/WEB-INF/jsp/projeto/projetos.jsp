@@ -100,7 +100,7 @@
                 // EXIBIR PROJETO SELECIONADO
                 $("table tbody tr").on("click", function () {
                     var id = $(this).find(".id").text();
-                    var url = '<c:url value="/projeto/"/>' + id;
+                    var url = '<c:url value="${t['url.buscar.projeto.id']}?id="/>' + id;
                     window.open(url, "_self");
                 });
 

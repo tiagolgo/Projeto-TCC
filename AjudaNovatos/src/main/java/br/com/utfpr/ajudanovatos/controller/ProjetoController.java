@@ -12,6 +12,7 @@ import Dao.especificos.DaoProjeto;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
+import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.I18nMessage;
@@ -19,7 +20,9 @@ import br.com.caelum.vraptor.validator.Validator;
 import static br.com.caelum.vraptor.view.Results.json;
 import br.com.utfpr.ajudanovatos.projeto.Projeto;
 import br.com.utfpr.ajudanovatos.entidade.usuario.UsuarioLogado;
-import java.time.LocalDate;
+import br.com.utfpr.ajudanovatos.projeto.beans.ProjetoBean;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.inject.Inject;
 import org.hibernate.HibernateException;
@@ -61,17 +64,32 @@ public class ProjetoController {
     @Post(value = {"pt/salvar/projeto", "en/save/project"})
     public void salvar(Projeto projeto){
         String nomeProjeto = projeto.getNome();
-
+        Long i = null;
         if (projeto.getId()==null) {
             this.validator.addIf(this.dao.seProjetoExiste(projeto.getNome()), new I18nMessage("error", "projeto.existente"));
             this.validator.onErrorForwardTo(this).formulario();
-            String data = LocalDate.now().toString();
+            //String data = LocalDate.now().toString();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); //você pode usar outras máscaras 
+            String data = sdf.format(new Date());
             projeto.setDataCriacao(data);
+        } else {
+            i = projeto.getId();
         }
+
         try {
+            ProjetoBean pb = new ProjetoBean();
+            pb.setNome(nomeProjeto);
+
             projeto.setUsuario(this.usuario.getId());
             this.dao.persiste(projeto);
             this.result.include("nomeprojeto", nomeProjeto);
+
+            if (i!=null) {
+                pb.setId(projeto.getId());
+            }
+            this.dados.setProjetoAntigo(pb);
+            this.dados.setProjetoRecente(pb);
+
             this.result.redirectTo(this).uploadImagem();
         } catch (HibernateException e) {
             this.result.redirectTo(this).formulario();
@@ -134,4 +152,39 @@ public class ProjetoController {
     public void uploadImagem(){
     }
 
+    /*@Path("/dados")
+    public void formulario(){
+    }*/
+
+    @Path("/requisitos")
+    public void requisitos(){
+    }
+
+    @Path("/fluxo")
+    public void fluxo(){
+    }
+
+    @Path("/tarefa")
+    public void tarefa(){
+    }
+
+    @Path("/auxilio")
+    public void auxilio(){
+    }
+
+    @Path("/workspace")
+    public void workspace(){
+    }
+
+    @Path("/comunicacao")
+    public void comunicacao(){
+    }
+
+    @Path("/codigo")
+    public void codigo(){
+    }
+
+    @Path("/submissao")
+    public void submissao(){
+    }
 }

@@ -22,9 +22,9 @@
                     <a href="<c:url value="${t['url.home']}"/>" class="element text-bold" style="font-size: 20px"><span class="icon-grid-view"></span> AJUDA NOVATOS</a>
                     <span class="element-divider"></span>
                     <a class="pull-menu" href="#"></a>
-                    <div class="element place-left bg-black"  data-hint-mode="2" data-hint="Visualizar projetos.">
+                    <div class="element place-left"  data-hint-mode="2" data-hint="Visualizar projetos.">
                         <a class="dropdown-toggle " href="#" style="font-size: 20px"><span class=""></span> ${t["menu.projetos"]}</a>
-                        <ul class="dropdown-menu place-left dark" data-role="dropdown">
+                        <ul class="dropdown-menu place-left bg-grayLighter" data-role="dropdown">
                             <li>
                                 <a href="#" class="dropdown-toggle" data-hint-mode="2" data-hint="Visualizar projetos por linguagem">${t["menu.sub.linguagem"]}</a>
                                 <ul class="dropdown-menu bg-grayLighter" data-role="dropdown">
